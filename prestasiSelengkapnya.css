@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    scroll-behavior: smooth;
+}
+
+body{
+    background-color: white;
+    font-family: 'poppins';
+}
+
+.back-button {
+    background-color: #161D6F;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 1000;
+}
+
+.back-button:hover {
+    background-color: #0F145A;
+    transform: scale(1.05);
+}
+
+.judul {
+    color: white;
+    position: absolute;
+    z-index: 2;
+    top: 30%;  /* Menyesuaikan posisi secara dinamis */
+    left: 50%; /* Menyusun teks di tengah horizontal */
+    transform: translateX(-50%); /* Menyelaraskan judul di tengah */
+    font-size: 1rem; /* Ukuran font dinamis berdasarkan lebar layar */
+}
+
+.text{
+    margin-bottom: 30px;
+    font-size: 16px;
+    color: #828893;
+    line-height: 26px;
+}

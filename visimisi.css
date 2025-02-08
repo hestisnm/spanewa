@@ -1,0 +1,202 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    scroll-behavior: smooth;
+}
+
+body{
+    background-color: white;
+    font-family: 'poppins';
+}
+
+.judul {
+    color: white;
+    position: absolute;
+    z-index: 2;
+    top: 30%;  /* Menyesuaikan posisi secara dinamis */
+    left: 50%; /* Menyusun teks di tengah horizontal */
+    transform: translateX(-50%); /* Menyelaraskan judul di tengah */
+    font-size: 5vw; /* Ukuran font dinamis berdasarkan lebar layar */
+}
+
+/* Garis */
+.garis {
+    position: absolute;
+    width: 80%; /* Lebar garis dinamis (80% dari lebar layar) */
+    height: 2px; /* Lebar garis */
+    background-color: white; /* Warna garis */
+    animation: slideInFromRight 1s ease-out forwards; /* Animasi garis masuk dari kanan */
+    top: 80%; /* Menyesuaikan posisi vertikal garis */
+    left: 50%; /* Menyelaraskan garis secara horizontal */
+    transform: translateX(-50%); /* Menyelaraskan garis di tengah */
+}
+
+/* Animasi garis masuk dari kanan */
+@keyframes slideInFromRight {
+    0% {
+        transform: translateX(100%); /* Posisi awal: di luar layar di sisi kanan */
+    }
+    100% {
+        transform: translateX(-50%); /* Posisi akhir: garis berada di tempatnya */
+    }
+}
+
+/* Media Queries untuk responsivitas lebih lanjut */
+@media (max-width: 768px) {
+    .judul {
+        font-size: 8vw; /* Ukuran font lebih besar pada layar kecil */
+        top: 25%; /* Menyesuaikan posisi vertikal untuk layar kecil */
+    }
+
+    .garis {
+        width: 90%; /* Garis lebih lebar pada layar kecil */
+        top: 80%; /* Menyesuaikan posisi garis pada layar kecil */
+    }
+}
+
+@media (max-width: 480px) {
+    .judul {
+        font-size: 10vw; /* Ukuran font lebih besar pada layar sangat kecil */
+        top: 20%; /* Menyesuaikan posisi vertikal lebih rendah */
+    }
+
+    .garis {
+        width: 100%; /* Garis memenuhi lebar layar */
+        top: 90%; /* Menyesuaikan posisi garis pada layar kecil */
+    }
+}
+
+.content-section {
+    max-width: 100%;
+    margin: 0;
+    padding: 100px;
+    display: flex;
+    gap: 50px;
+    min-height: 100vh;
+    width: 100%;
+    box-sizing: border-box;
+    margin-bottom: -5%;
+}
+
+.left-content {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    height: 50%;
+
+}
+
+.right-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    width: 50%;
+}
+
+.students-image {
+    width: 100%;
+    border-radius: 20px;
+}
+
+.vision-box, .mission-box {
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.vision-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(255, 193, 7, 0.2);
+    border-left: 5px solid #FFC107;
+}
+
+.mission-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(64, 81, 181, 0.2);
+    border-left: 5px solid #4051B5;
+}
+
+.vision-box h3 {
+    color: #FFC107;
+    font-size: 1.8em;
+    margin-bottom: 20px;
+}
+
+.mission-box h3 {
+    color: #4051B5;
+    font-size: 1.8em;
+    margin-bottom: 20px;
+}
+
+.vision-box p {
+    font-size: 1.2em;
+    line-height: 1.6;
+    color: #333;
+}
+
+.mission-box ol {
+    padding-left: 20px;
+}
+
+.mission-box li {
+    margin-bottom: 15px;
+    font-size: 1.1em;
+    line-height: 1.5;
+    color: #333;
+}
+
+@media (max-width: 768px) {
+    .hero-content {
+        text-align: center;
+        padding: 0 20px;
+    }
+
+    .hero-content h1 {
+        font-size: 2em;
+    }
+
+    .hero-content h2 {
+        font-size: 1.5em;
+    }
+
+    .hero-image {
+        position: relative;
+        right: auto;
+        top: auto;
+        transform: none;
+        margin: 30px auto;
+        text-align: center;
+        width: 200px;
+        height: 200px;
+    }
+
+    .content-section {
+        flex-direction: column;
+        padding: 10px;
+    }
+
+    .circle-image {
+        width: 200px;
+        height: 200px;
+    }
+
+    .hero-section {
+        min-height: auto;
+        padding: 40px 0;
+    }
+
+    .content-section {
+        min-height: auto;
+    }
+}
+

@@ -1,0 +1,175 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    scroll-behavior: smooth;
+}
+
+body{
+    background-color: white;
+    font-family: 'poppins';
+}
+
+.profile-section {
+    background-color: #ffffff;
+    padding: 40px 0;
+    padding-top: 214px;
+}
+
+.profile-grid {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 40px;
+    align-items: start;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.profile-image-wrapper {
+    position: relative;
+    width: fit-content;
+    margin: 0 auto;
+}
+
+.profile-header {
+    text-align: center;
+    margin-top: -40px;
+    animation: slideInFromBottom 2s ease-out forwards; /* Tambahkan animasi */
+}
+
+/* Animasi Judul */
+@keyframes slideInFromBottom {
+    0% {
+        top: 100%; /* Awal dari luar layar bagian bawah */
+        opacity: 0; /* Tidak terlihat di awal */
+    }
+    50% {
+        opacity: 0.5; /* Perlahan muncul */
+    }
+    100% {
+        top: 50%; /* Akhir di posisi tengah */
+        opacity: 1; /* Sepenuhnya terlihat */
+    }
+}
+
+.profile-header h2 {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 5px;
+    align-items: center;
+}
+
+.profile-header p {
+    font-size: 14px;
+    color: #666;
+    align-items: center;
+}
+
+@media (max-width: 768px) {
+    .profile-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    
+    .profile-image-wrapper {
+        margin: 0 auto;
+    }
+    
+    .profile-header {
+        text-align: center;
+    }
+    
+    .message-box {
+        margin-top: 20px;
+    }
+}
+
+.quote-box {
+    border-left: 4px solid #ffd700;
+    padding-left: 20px;
+    margin-top: 30px;
+}
+
+/* Update mobile responsiveness */
+@media (max-width: 968px) {
+    .search-icon-btn {
+        margin: 10px 0;
+    }
+}
+
+.profile-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    background-color: #ffffff;
+    margin-bottom: 60px;
+}
+
+.profile-content {
+    display: flex;
+    gap: 5px;
+    align-items: flex-start;
+}
+
+.profile-image {
+    flex: 0 0 250px;
+    text-align: center; 
+}
+
+@keyframes slideInFromLeft {
+    from {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.profile-image img {
+    width: auto;
+    height: 500px;
+    margin-top: -40px;
+    z-index: 1;
+    animation: slideInFromLeft 1s ease-out;
+}
+
+
+.profile-message {
+    flex: 1;
+    background-color: #E9EFEC;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    height: auto;
+    width: 100px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.profile-message:hover {
+    transform: translateX(-5px);
+    box-shadow: 0 8px 15px rgba(64, 81, 181, 0.2);
+    border-left: 5px solid #4051B5;
+}
+
+.profile-message p {
+    margin-bottom: 15px;
+    line-height: 1.3rem;
+    position: relative;
+    z-index: 2;
+}
+
+@media (max-width: 768px) {
+    .profile-content {
+        flex-direction: column;
+    }
+    
+    .profile-image {
+        margin: 0 auto;
+    }
+}

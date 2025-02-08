@@ -1,0 +1,180 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: white;
+    font-family: 'poppins';
+}
+
+.judul {
+    color: white;
+    position: absolute;
+    z-index: 2;
+    top: 30%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 5vw;
+}
+
+/* Garis */
+.garis {
+    position: absolute;
+    width: 80%;
+    height: 2px;
+    background-color: white;
+    animation: slideInFromRight 1s ease-out forwards;
+    top: 80%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+@keyframes slideInFromRight {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+/* Media Queries untuk responsivitas */
+@media (max-width: 768px) {
+    .judul {
+        font-size: 8vw;
+        top: 25%;
+    }
+
+    .garis {
+        width: 90%;
+        top: 40%;
+    }
+
+    /* Mengubah grid layout menjadi satu kolom pada layar lebih kecil */
+    .activities {
+        grid-template-columns: 1fr; 
+        padding: 20px;
+    }
+
+    /* Gambar di activity akan memenuhi 100% lebar kontainer */
+    .activity img {
+        width: 100%;
+        height: auto; 
+        object-fit: cover;
+    }
+
+    .activity {
+        margin-bottom: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .judul {
+        font-size: 10vw;
+        top: 20%;
+    }
+
+    .garis {
+        width: 100%;
+        top: 45%;
+    }
+
+    /* Grid layout menjadi satu kolom pada layar lebih kecil */
+    .activities {
+        grid-template-columns: 1fr; 
+        padding: 10px;
+    }
+
+    .activity img {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+    }
+
+    .gallery-caption {
+        padding: 4rem;
+        font-size: 1.2rem;
+    }
+}
+
+/* Layout Grid */
+.activities {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 50px;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 50px;
+    position: relative;
+    z-index: 2;
+}
+
+.activity {
+    position: relative;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+.activity:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    color: #ffffff;
+}
+
+.activity img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.activity:hover img {
+    transform: scale(1.05);
+}
+
+.gallery-caption {
+    background: #161d6f6c;
+    padding: 6rem;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 1.5rem;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    text-align: center;
+}
+
+.activity:hover .gallery-caption {
+    opacity: 1;
+}
+
+.activity p {
+    text-align: center;
+    margin-top: 10px;
+    background-color: #fdd835;
+    margin: 0;
+    padding: 15px;
+    font-weight: bold;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.activity:hover p {
+    background-color: #ffed4a;
+}

@@ -1,0 +1,100 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    scroll-behavior: smooth;
+}
+
+body{
+    background-color: white;
+    font-family: 'poppins';
+}
+
+/* Import Font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Background dengan Gradasi */
+body {
+    background: linear-gradient(to right, #919ADF, #BFC4EC);
+    color: #333;
+    padding: 20px;
+}
+
+/* Judul */
+h2 {
+    text-align: center;
+    font-size: 28px;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Link Tambah Berita */
+a[href="create.php"] {
+    display: inline-block;
+    background: #4A63E7;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 600;
+    margin-bottom: 20px;
+    transition: 0.3s;
+}
+
+a[href="create.php"]:hover {
+    background: #3346B7;
+}
+
+/* Tabel Styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+th, td {
+    padding: 12px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background: #4A63E7;
+    color: white;
+    font-weight: 600;
+}
+
+td img {
+    border-radius: 5px;
+}
+
+/* Hover pada Baris Tabel */
+tr:hover {
+    background: #f5f5f5;
+}
+
+/* Link Aksi */
+td a {
+    text-decoration: none;
+    color: #4A63E7;
+    font-weight: 600;
+    margin: 0 5px;
+    transition: 0.3s;
+}
+
+td a:hover {
+    color: #3346B7;
+}

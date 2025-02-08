@@ -1,0 +1,132 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    scroll-behavior: smooth;
+}
+
+body{
+    background-color: white;
+    font-family: 'poppins';
+}
+
+.judul {
+    color: white;
+    position: absolute;
+    z-index: 2;
+    top: 30%;  /* Menyesuaikan posisi secara dinamis */
+    left: 50%; /* Menyusun teks di tengah horizontal */
+    transform: translateX(-50%); /* Menyelaraskan judul di tengah */
+    font-size: 5vw; /* Ukuran font dinamis berdasarkan lebar layar */
+}
+
+/* Garis */
+.garis {
+    position: absolute;
+    width: 80%; /* Lebar garis dinamis (80% dari lebar layar) */
+    height: 2px; /* Lebar garis */
+    background-color: white; /* Warna garis */
+    animation: slideInFromRight 1s ease-out forwards; /* Animasi garis masuk dari kanan */
+    top: 80%; /* Menyesuaikan posisi vertikal garis */
+    left: 50%; /* Menyelaraskan garis secara horizontal */
+    transform: translateX(-50%); /* Menyelaraskan garis di tengah */
+}
+
+/* Animasi garis masuk dari kanan */
+@keyframes slideInFromRight {
+    0% {
+        transform: translateX(100%); /* Posisi awal: di luar layar di sisi kanan */
+    }
+    100% {
+        transform: translateX(-50%); /* Posisi akhir: garis berada di tempatnya */
+    }
+}
+
+/* Media Queries untuk responsivitas lebih lanjut */
+@media (max-width: 768px) {
+    .judul {
+        font-size: 8vw; /* Ukuran font lebih besar pada layar kecil */
+        top: 25%; /* Menyesuaikan posisi vertikal untuk layar kecil */
+    }
+
+    .garis {
+        width: 90%; /* Garis lebih lebar pada layar kecil */
+        top: 40%; /* Menyesuaikan posisi garis pada layar kecil */
+    }
+}
+
+.keterangan {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    font-size: 14px;
+    padding: 10px;
+    text-align: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.karya {
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    top: 20px;
+    bottom: 20px;
+}
+
+.card {
+    justify-content: center;
+    gap: 30px;
+    margin: 25px;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.card img {
+    height: 300px;
+    width: 300px;
+    object-fit: cover;
+    filter: brightness(100%);
+    transition: filter 1s ease, transform 1s ease;
+}
+
+.card:hover img {
+    filter: brightness(60%);
+    transform: scale(1.1);
+}
+
+.card-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 1rem;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.card:hover .card-text {
+    opacity: 1;
+}
+
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+
+

@@ -1,0 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+*{
+  font-family: "Poppins";
+  font-weight: 500;
+  font-style: normal;
+}
+
+.navbar-scrolled {
+  background-color: #161D6F !important;
+  transition: background-color 0.3s ease;
+}
+
+.navbar-scrolled .nav-link,
+.navbar-scrolled .navbar-brand{
+  color: white !important;
+}
+
+.navbar {
+  transition: background-color 0.3s ease;
+}
+
+.copyright {
+  text-align: center;
+  padding-top: 20px;
+  border-top: 1px solid #333;
+  color: #888888;
+  font-size: 12px;
+}
+
+/* CSS untuk underline menu aktif */
+.navbar-nav .nav-link.active {
+  text-decoration: underline;
+  font-weight: bold; /* Opsional: untuk memberi penekanan lebih pada link yang aktif */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

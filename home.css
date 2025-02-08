@@ -1,0 +1,338 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    scroll-behavior: smooth;
+}
+html, body {
+    overflow-x: hidden; /* Mencegah kelebihan lebar */
+    max-width: 100%;
+}
+
+body {
+    background-color: white;
+    font-family: 'Poppins', sans-serif;
+}
+
+.gambar1 {
+    position: relative;
+    z-index: 1;
+    width: 100vw;
+}
+
+.gambar2 {
+    position: absolute;
+    z-index: 2;
+    top: 185px;  
+    left: 78%;
+    transform: translateX(-50%);
+    width: 80%; /* Make the image responsive */
+    max-width: 400px; /* Optional max width */
+}
+
+.judul {
+    color: white;
+    position: absolute;
+    z-index: 2;
+    top: 185px;  
+    left: 30%;
+    transform: translateX(-50%);
+}
+
+.judul h5 {
+    font-size: 3rem;
+}
+
+.buton {
+    background-color: #161D6F;
+    border-radius: 40px;
+    height: 60px;
+    width: 230px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Statistik Title */
+.statistik {
+    font-size: 5vw; /* Dynamic based on screen width */
+    text-align: center;
+    margin-top: 4vh;
+    color: #161D6F;
+    font-weight: bold;
+}
+
+/* Stats Grid */
+.stats-grid {
+    display: flex;
+    justify-content: center; /* Memastikan grid berada di tengah */
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto; /* Tengah di halaman */
+    gap: 100px; /* Space antar elemen */
+    flex-wrap: wrap; /* Supaya responsif */
+}
+
+
+/* Stat Item */
+.stat-item {
+    color: #161D6F;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 30px;
+    font-size: 3rem;
+}
+
+/* Stat Icon */
+.stats-section .stat-icon {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 25px;
+}
+
+.stat-icon img {
+    width: 100%;
+    height: 100%;
+}
+
+/* Stat Number */
+.stat-number {
+    font-size: 4rem;
+    font-weight: bold;
+    margin: 10px 0;
+    line-height: 1;
+}
+
+.stat-number {
+    font-size: 4rem;
+    font-weight: bold; /* Memastikan bold */
+}
+
+/* Stat Label */
+.stat-label {
+    font-size: 1.5rem;
+    font-weight: 300;
+}
+
+/* Profile Section */
+.profile-section {
+    background-color: white;
+    padding: 40px 20px;
+}
+
+.profile-grid {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 40px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.profile-image-wrapper {
+    width: fit-content;
+    margin: 10 auto;
+}
+
+.profile-image {
+    position: absolute;
+    z-index: 2;
+    width: 300px;
+    height: 300px;
+    object-fit: contain;
+}
+
+.profile-title {
+    text-align: center;
+    margin-top: 330px;
+}
+
+.profile-title h3 {
+    color: #333;
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.profile-title p {
+    color: #666;
+    font-size: 14px;
+}
+
+.message-box {
+    background-color: #E9EFEC;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 30px 40px rgba(19, 14, 14, 0.1), 0 0 10px rgba(46, 46, 46, 0.2);
+}
+
+.message-box p {
+    margin-bottom: 15px;
+    color: #555;
+    line-height: 1.6;
+}
+
+.cta-button {
+    background-color: #FFD700;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.cta-button:hover {
+    background-color: #ffed4a;
+    color: white;
+    transform: translateY(-5px);
+}
+
+/* Responsive for smaller screens */
+@media (max-width: 768px) {
+    .gambar2 {
+        left: 40%;
+        top: 300px;
+    }
+
+    .judul {
+        color: black;
+    top: 150px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(255, 255, 255, 0.696); /* Transparan untuk efek blur */
+    backdrop-filter: blur(10px); /* Efek blur pada background */
+    -webkit-backdrop-filter: blur(10px); /* Untuk dukungan browser Safari */
+    }
+
+    .statistik {
+        font-size: 6vw;
+    }
+
+    .stats-grid {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .stat-item {
+        flex: 1 1 45%; /* 2 items per row */
+    }
+
+    .stat-text, .stat-number {
+        font-size: 3rem;
+    }
+
+    .stat-label {
+        font-size: 1.4rem;
+    }
+
+    .profile-grid {
+        grid-template-columns: 1fr; /* Stack profile image and text */
+        gap: 20px;
+    }
+
+    .profile-image-wrapper {
+        margin: 0 auto;
+    }
+
+    .profile-image {
+        width: 250px;
+        height: 250px;
+    }
+
+    .cta-button {
+        font-size: 1rem;
+    }
+}
+
+/* Responsive for very small screens (smartphones) */
+@media (max-width: 480px) {
+    .gambar2 {
+        top: 100px;
+        width: 80%;
+    }
+
+    .judul h5 {
+        font-size: 2rem;
+    }
+
+    .statistik {
+        font-size: 8vw;
+    }
+
+    .stat-item {
+        flex: 1 1 100%; /* Each stat item takes full width */
+    }
+
+    .stat-number {
+        font-size: 2.5rem;
+    }
+
+    .stat-label {
+        font-size: 1.2rem;
+    }
+
+    .profile-image-wrapper {
+        margin: 0 auto;
+    }
+
+    .profile-image {
+        width: 200px;
+        height: 200px;
+    }
+
+    .cta-button {
+        font-size: 1rem;
+        padding: 8px 16px;
+    }
+}
+
+
+/* Modal - Popup */
+.modal {
+    display: none; /* Awalnya disembunyikan */
+    position: absolute;
+    z-index: 3;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(255, 255, 255, 0.696); /* Transparan untuk efek blur */
+    backdrop-filter: blur(10px); /* Efek blur pada background */
+    -webkit-backdrop-filter: blur(10px); /* Untuk dukungan browser Safari */
+}
+
+/* Konten Modal */
+.modal-content {
+    background-color: #fff;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Atur lebar modal */
+    max-width: 500px; /* Maksimal lebar modal */
+    text-align: center;
+}
+
+/* Tombol Tutup */
+.close-btn {
+    color: #aaa;
+    font-size: 28px;
+    font-weight: bold;
+    position: absolute;
+    right: 15px;
+    top: 10px;
+    cursor: pointer;
+}
+
+.close-btn:hover,
+.close-btn:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}

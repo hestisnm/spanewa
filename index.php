@@ -26,7 +26,7 @@
 <nav class="navbar navbar-expand-lg bg-body-transparant sticky-top" style="font-size:0.8em">
   <div class="container-fluid">
     <a class="navbar-brand pe-35">
-      <a href="inddex.php?page=home"> <img src="./media/logo_spanewa-removebg-preview (1).png" alt="Logo" width="40" height="auto" class="d-inline-block align-text-top"></a>
+      <a href="index.php?page=home"> <img src="./media/logo_spanewa-removebg-preview (1).png" alt="Logo" width="40" height="auto" class="d-inline-block align-text-top"></a>
       <h5 style="color:white; font-size:1rem; margin: 5px;">SMPN 1 WAGIR</h5> 
     </a>
     

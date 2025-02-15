@@ -1,5 +1,5 @@
 <?php
-$conn = new mysqli("localhost", "root", "", "");
+$conn = new mysqli("localhost", "root", "", "spanewa_hesti");
 
 // Dapatkan bulan dan tahun sekarang
 $bulan = date('n');

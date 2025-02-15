@@ -569,7 +569,9 @@ fetch('grafik_pengunjung.php')
     </script>
 </div>
 
+
 <!-- berita -->
+ 
 <div id="news" class="page" style="display: none;">
     <h2 style="color: #5C4B8E; text-align: center;">Berita Terkini</h2>
     <div style="text-align: center; margin-bottom: 15px; margin-top: 15px;">

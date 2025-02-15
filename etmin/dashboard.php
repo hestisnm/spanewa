@@ -1,5 +1,5 @@
 <?php
-$conn = new mysqli("localhost", "root", "", "spanewa_hesti");
+include("koneksi.php");
 
 if ($conn->connect_error) {
     die("Koneksi gagal: " . $conn->connect_error);

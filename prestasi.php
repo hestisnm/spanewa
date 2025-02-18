@@ -18,46 +18,32 @@
 
 
 <div class="prestasi">
-            <div class="card">
-  <img src="./media/prestasi taekwondo .jpg" class="card-img-top" alt="...">
-  <div class="card-body">
-    <p class="card-text">Cabang Lomba Taekwondo<br></p>
-    <a href="prestasiSelengkapnya.php" class="btn btn-primary">Selengkapnya</a>
-  </div>
-</div>
+<?php
+    include './admin/koneksi.php';
+    
+    // Fetch news from database
+    $sql = "SELECT * FROM prestasi ORDER BY date DESC";
+    $result = $conn->query($sql);
+    
+    if ($result->num_rows > 0) {
+        while($row = $result->fetch_assoc()) {
+    ?>
 
             <div class="card">
-  <img src="./media/prestasi jambore.jpg" class="card-img-top" alt="...">
+  <img src="./admin/media" class="card-img-top" alt="...">
   <div class="card-body">
-    <p class="card-text">
-Jambore Bulan Bahasa Tingkat Kab.Malang 2024 <br>
-<a href="prestasiSelengkapnya.php" class="btn btn-primary">Selengkapnya</a>
-</p>
+  <b><?php echo nl2br($row['title']); ?></b><br>
+  <?php echo substr(nl2br($row['content']), 0, 150) . '...'; ?><br>
+  <a href="prestasiSelengkapnya.php?id=<?= $row['id'] ?>" class="btn btn-primary">Baca Selengkapnya</a>
   </div>
 </div>
-            <div class="card">
-  <img src="./media/prestasi pencak silat.jpg" class="card-img-top" alt="...">
-  <div class="card-body">
-    <p class="card-text">Cabang Lomba Pencak Silat<br></p>
-    <a href="prestasiSelengkapnya.php" class="btn btn-primary">Selengkapnya</a>
-  </div>
 </div>
 
-            <div class="card" >
-  <img src="./media/pantomim.jpg" class="card-img-top" alt="...">
-  <div class="card-body">
-    <p class="card-text">Juara Pantomim FLSN 2024<br></p>
-    <a href="prestasiSelengkapnya.php" class="btn btn-primary">Selengkpanya</a>
-  </div>
-</div>
-            <div class="card">
-  <img src="./media/silat kls 9,7,8.jpg" class="card-img-top" alt="...">
-  <div class="card-body">
-    <p class="card-text">Juara Silat 2023<br></p>
-    <a href="prestasiSelengkapnya.php" class="btn btn-primary">Selengkapnya</a>
-  </div>
-</div>
+<?php
+        }
+    } else {
+        echo "<p>Belum ada prestasi terbaru.</p>";
+    }
+    $conn->close();
+    ?>
 
-
-
-</div>

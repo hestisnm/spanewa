@@ -144,3 +144,238 @@ window.addEventListener('load', () => {
     };
 </script>
 
+<<!-- berita -->
+    <h3 style="font-size: 3vw;
+    text-align: center;
+    margin-top: 4vh;
+    color: #161D6F;
+    font-weight: bold;">BERITA TERKINI</h3>
+<div class="banyak">
+    
+    <?php
+    include './admin/koneksi.php';
+    
+    // Fetch 3 latest news from database
+    $sql = "SELECT * FROM news ORDER BY date DESC LIMIT 3";
+    $result = $conn->query($sql);
+    
+    if ($result->num_rows > 0) {
+        while($row = $result->fetch_assoc()) {
+    ?>
+        <div class="foto2">
+            <img src="./admin/media/<?php echo $row['image']; ?>">
+            <div class="text2">
+                <p>
+                    <b><?php echo nl2br($row['title']); ?></b><br>
+                    <?php echo substr(nl2br($row['content']), 0, 150) . '...'; ?><br>
+                    <h5>📆 <?php echo date('d F Y', strtotime($row['date'])); ?></h5>
+                    <h5>✍️ <?php echo $row['author']; ?></h5>
+                    <a href="beritaSelengkapnya.php?id=<?= $row['id'] ?>" style="background-color: #0B2F9F; color: white;" class="btn btn-primary">Baca Selengkapnya</a>
+                </p>
+            </div>
+        </div>
+    <?php
+        }
+    } else {
+        echo "<p>Belum ada berita.</p>";
+    }
+    $conn->close();
+    ?>
+    <div  class="lebih-banyak">
+    <a href="index.php?page=berita">
+        <button style="text-align: center; padding: 10px; background-color: #0B2F9F; color: white;" class="cta-button1">BACA BERITA LAINNYA</button></a>
+</div>
+</div>
+
+
+<style>
+    .banyak {
+        display: flex;
+        align-items: stretch;
+        gap: 30px;
+        margin: 50px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .foto2 {
+        width: 340px;
+        background: white;
+        border-radius: 15px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+        padding: 15px;
+    }
+
+    .foto2:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .foto2 img {
+        width: 100%;
+        height: 220px;
+        border-radius: 8px;
+        object-fit: cover;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .text2 {
+        padding: 15px 0;
+    }
+
+    .text2 p {
+        font-size: 16px;
+        color: #333;
+        line-height: 1.5;
+        margin: 0;
+    }
+
+    .text2 b {
+        background: linear-gradient(120deg, #0B2F9F, #4169E1);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        transition: opacity 0.3s ease;
+        font-size: 16px;
+    }
+
+    .text2 b:hover {
+        opacity: 0.8;
+    }
+
+    .text2 h5 {
+        color: #666;
+        margin-top: 10px;
+        font-size: 12px;
+    }
+</style>
+
+
+<!-- galeri -->
+<h3 style="font-size: 3vw;
+    text-align: center;
+    margin-top: 4vh;
+    color: #161D6F;
+    font-weight: bold;">GALERI</h3>
+<div class="banyak">
+
+<?php
+    include './admin/koneksi.php';
+    
+    // Fetch news from database
+    $sqlg = "SELECT * FROM galeri ORDER BY date DESC LIMIT 6";
+    $resultg = $conn->query($sqlg);
+    
+    if ($resultg->num_rows > 0) {
+        while($row = $result->fetch_assoc()) {
+    ?>
+
+    <h3><?php echo nl2br($row['title']); ?></h3>
+</div>
+
+<div class="tiga">
+    <div class="persegi">
+        <div class="wanpik">
+            <img src="./admin/media/<?php echo $row['image']; ?>">
+            <div class="text-overlay-container">
+                <div class="text-overlay">
+                <?php echo nl2br($row['title']); ?>
+            </div>
+            </div>
+        </div>
+    </div>
+    <?php
+        }
+    } else {
+        echo "<p>Belum ada fotoyang ditambahkan.</p>";
+    }
+    $conn->close();
+    ?>
+    </div>
+
+    <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    scroll-behavior: smooth;
+}
+
+
+.judul2{
+    text-align: center;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+.awal {
+    position: relative;
+    width: 300px;
+    height: auto;
+    overflow: hidden;
+}
+
+.persegi {
+    position: relative;
+    width: 300px;
+    height: auto;
+    overflow: hidden;
+    border-radius: 5px; 
+}
+
+.tiga {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin: 50px 150px;
+}
+
+.wanpik {
+    position: relative;
+    width: 200px;
+    height: 160px;
+    box-shadow: black;
+}
+
+.pik {   
+    width: 300px;
+    height: auto;
+    object-fit: cover;
+    filter: brightness(100%);
+    transform: scale(1);
+    transition: filter 1s ease, transform 1s ease;
+}
+
+.text-overlay-container {
+    position: absolute;
+    bottom: 15px;
+    left: 10px;
+    right: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+    transform: translateY(100%);
+    opacity: 0;
+    transition: opacity 1s ease, transform 1s ease;
+}
+
+.text-overlay {
+    font-size: 0.8em;
+    font-weight: 400;
+    color: white;
+}
+
+.wanpik:hover .pik {
+    filter: brightness(60%);
+    transform: scale(1.25);
+}
+
+.wanpik:hover .text-overlay-container {
+    transform: translateY(0);
+    opacity: 1;
+}
+</style>

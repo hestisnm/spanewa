@@ -2,60 +2,110 @@
 <link href="beritaSelengkapnya.css" rel="stylesheet">
 
 <button class="back-button">
-     <a href="index.php?page=berita" style="color:white; text-decoration:none;">Kembali</button></a>
+     <a href="index.php?page=berita" style="color:white; text-decoration:none;">Kembali</a>
+</button>
 
-     <div class="banner">
-<div class="hero">
-<img style="height:300px; width:100%; object-fit:cover" src="./media/osis.png"></div>
-            <div class="judul">
-            <h2><B>Berita</B></h2> 
-            </div>
-            </div>
-
-            <div class="image-container">
-    <img src="./media/upacara kesaktian pancasila.jpg">
-    <img src="./media/upacara kesaktian pancasila.jpg">
-    <img src="./media/upacara kesaktian pancasila.jpg">
-    <img src="./media/upacara kesaktian pancasila.jpg">
-    <img src="./media/upacara kesaktian pancasila.jpg">
-    <img src="./media/upacara kesaktian pancasila.jpg">
+<div class="banner">
+    <div class="hero">
+        <img style="height:300px; width:100%; object-fit:cover" src="./media/osis.png">
+    </div>
+    <div class="judul">
+        <h2><b>Berita</b></h2>
+    </div>
 </div>
+<?php
+include './admin/koneksi.php';
+
+// Ambil ID berita dari URL
+$id = isset($_GET['id']) ? intval($_GET['id']) : 0;
+
+// Fetch berita berdasarkan ID
+$sql = "SELECT * FROM news WHERE id = ?";
+$stmt = $conn->prepare($sql);
+$stmt->bind_param('i', $id);
+$stmt->execute();
+$result = $stmt->get_result();
+
+if ($result->num_rows > 0) {
+    $berita = $result->fetch_assoc();
+
+    // Ambil gambar slider dari kolom image_slider, split jadi array
+    $images = [];
+    if (!empty($berita['image_slider'])) {
+        $images = explode(',', $berita['image_slider']);
+        // Tambahkan path ke folder gambar
+        foreach ($images as &$img) {
+            $img = './admin/media/' . trim($img);
+        }
+    }
+} else {
+    echo "<p>Berita tidak ditemukan.</p>";
+    exit;
+}
+?>
+
+<div class="image-container-wrapper">
+    <div class="image-container">
+        <?php
+        for ($i = 0; $i < 2; $i++) :
+            foreach ($images as $image) :
+        ?>
+                <div class="image-item">
+                    <img src="<?= $image; ?>" alt="Gambar Berita">
+                </div>
+        <?php
+            endforeach;
+        endfor;
+        ?>
+    </div>
+</div>
+
+
+<style>
+.image-container-wrapper {
+    overflow: hidden;
+    white-space: nowrap;
+    position: relative;
+    background: white;
+    padding: 10px 0;
+}
+
+.image-container {
+    display: flex;
+    width: fit-content;
+    animation: marquee 90s linear infinite;
+}
+
+.image-item img {
+    width: 200px;
+    height: 150px;
+    object-fit: cover;
+    margin-right: 10px;
+}
+
+@keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+}
+
+.image-container-wrapper:hover .image-container {
+    animation-play-state: paused;
+}
+</style>
 
 <div style="display:flex; margin:40px; gap:20px;" class="konten">
-    <img style="width:300px; height:auto; border-radius:10px;" src="./media/upacara kesaktian pancasila.jpg">
+    <img style="width:300px; height:200px; border-radius:10px;" src="./admin/media/<?= $berita['image']; ?>">
     <div>
-        <h1>Upacara hari kesaktian pancasila</h1>
-        <p>Upacara hari kesaktian pancasila</p>
-        <p id="tanggal-pembuatan" style="font-size:14px; color:gray;"></p>
+        <h1><?= nl2br($berita['title']); ?></h1>
+        <p><?= nl2br($berita['content']); ?></p>
+        <p style="font-size:14px; color:gray;">Dibuat pada: <?= date('d F Y', strtotime($berita['date'])); ?> | Oleh: <?= $berita['author']; ?></p>
     </div>
-    <img style="width:300px; height:auto;" src="./media/fripik berita.png">
 </div>
 
-
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-    const tanggalPembuatan = new Date().toLocaleDateString("id-ID", {
-        year: "numeric",
-        month: "long",
-        day: "numeric"
-    });
-
-    document.getElementById("tanggal-pembuatan").textContent = `Dibuat pada: ${tanggalPembuatan}`;
-});
-</script>
-
-
 <div style="margin:40px; margin-top:10px;" class="text">           
-    Lorem Ipsum Dolor Sit Amet
+    <?= nl2br($berita['selengkapnya']); ?>
+</div>
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.  
-
-Suspendisse potenti. Nulla facilisi. Fusce convallis metus id felis tincidunt, non vulputate est eleifend. Maecenas accumsan, nisl vel aliquet interdum, magna odio fermentum turpis, nec condimentum risus justo et massa. Vivamus tincidunt, lorem eget cursus tincidunt, velit odio viverra ligula, sed dapibus nisi mauris vel metus. Ut nec felis non turpis rhoncus feugiat. Donec porta ipsum sit amet nulla volutpat fermentum. Mauris vel turpis in lorem sollicitudin dictum.  
-
-Curabitur euismod lorem nec nunc scelerisque, et fringilla ligula feugiat. Vestibulum euismod, orci ut vestibulum consectetur, felis ex vehicula quam, non luctus arcu nunc eget neque. Nulla facilisi. Aenean fermentum, mi ut pellentesque viverra, felis felis sollicitudin justo, a dignissim nulla sem et dolor. Cras sit amet odio sapien. Morbi tristique nisi at tortor ultricies, at gravida turpis faucibus. Suspendisse potenti. Integer interdum, nisi a interdum varius, justo urna tincidunt est, eget gravida mi libero non neque.  
-
-Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Duis blandit, justo sed tincidunt sodales, erat dui facilisis ligula, vel vehicula ligula mauris sit amet mauris. Proin consequat justo ut lorem efficitur, sed facilisis magna rhoncus. Sed sit amet felis vel lectus vulputate ullamcorper. Ut feugiat dolor a arcu scelerisque, nec fringilla felis vehicula.  
-
-</div> 
-
-
+<?php
+$conn->close();
+?>

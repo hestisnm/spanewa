@@ -6,161 +6,73 @@
 </div>
 
 <div class="guru">
+<?php
+    include './admin/koneksi.php';
+    
+    // Fetch news from database
+    $sql = "SELECT * FROM guru ORDER BY date DESC";
+    $result = $conn->query($sql);
+    
+    if ($result->num_rows > 0) {
+        while($row = $result->fetch_assoc()) {
+    ?>
+
 
 <div class="card" style="width: 15rem;">
-  <img src="./media/bu asna.jpg" class="card-img-top" style="height: 12rem; object-fit:cover;" alt="...">
+  <img  src="./admin/media/<?php echo $row['image']; ?>" class="card-img-top" style="height: 12rem; object-fit:cover;" alt="...">
   <div class="card-body">
-    <p class="card-text"><h5>Endah Asnawati, S.Pd</h5>
-<p style="color: grey">ILMU PENGETAHUAN ALAM</p>
+    <p class="card-text">
+    <b><?php echo nl2br($row['nim']); ?></b><br>
+    <b><?php echo nl2br($row['nama']); ?></b><br>
+</p>
   </div>
 </div>
-
-<div class="card" style="width: 15rem;">
-  <img src="./media/bu dian.jpg" class="card-img-top" style="height: 12rem; object-fit:cover;" alt="...">
-  <div class="card-body">
-    <p class="card-text"><h5>Endah Asnawati, S.Pd</h5>
-<p style="color: grey">ILMU PENGETAHUAN ALAM</p>
-  </div>
 </div>
-
-<div class="card" style="width: 15rem;">
-  <img src="./media/bu elok.jpg" class="card-img-top" style="height: 12rem; object-fit:cover;" alt="...">
-  <div class="card-body">
-    <p class="card-text"><h5>Endah Asnawati, S.Pd</h5>
-<p style="color: grey">ILMU PENGETAHUAN ALAM</p>
-  </div>
-</div>
-
-<div class="card" style="width: 15rem;">
-  <img src="./media/bu eka.jpg" class="card-img-top" style="height: 12rem; object-fit:cover;" alt="...">
-  <div class="card-body">
-    <p class="card-text"><h5>Endah Asnawati, S.Pd</h5>
-<p style="color: grey">ILMU PENGETAHUAN ALAM</p>
-  </div>
-</div>
-
-<div class="card" style="width: 15rem;">
-  <img src="./media/bu endah.jpg" class="card-img-top" style="height: 12rem; object-fit:cover;" alt="...">
-  <div class="card-body">
-    <p class="card-text"><h5>Endah Asnawati, S.Pd</h5>
-<p style="color: grey">ILMU PENGETAHUAN ALAM</p>
-  </div>
-</div>
-
-<div class="card" style="width: 15rem;">
-  <img src="./media/bu endang.jpg" class="card-img-top" style="height: 12rem; object-fit:cover;" alt="...">
-  <div class="card-body">
-    <p class="card-text"><h5>Endah Asnawati, S.Pd</h5>
-<p style="color: grey">ILMU PENGETAHUAN ALAM</p>
-  </div>
-</div>
-
-<div class="card" style="width: 15rem;">
-  <img src="./media/bu ima.jpg" class="card-img-top" style="height: 12rem; object-fit:cover;" alt="...">
-  <div class="card-body">
-    <p class="card-text"><h5>Endah Asnawati, S.Pd</h5>
-<p style="color: grey">ILMU PENGETAHUAN ALAM</p>
-  </div>
-</div>
-
-<div class="card" style="width: 15rem;">
-  <img src="./media/bu laily.jpg" class="card-img-top" style="height: 12rem; object-fit:cover;" alt="...">
-  <div class="card-body">
-    <p class="card-text"><h5>Endah Asnawati, S.Pd</h5>
-<p style="color: grey">ILMU PENGETAHUAN ALAM</p>
-  </div>
-</div>
-
-<div class="card" style="width: 15rem;">
-  <img src="./media/bu asna.jpg" class="card-img-top" style="height: 12rem; object-fit:cover;" alt="...">
-  <div class="card-body">
-    <p class="card-text"><h5>Endah Asnawati, S.Pd</h5>
-<p style="color: grey">ILMU PENGETAHUAN ALAM</p>
-  </div>
-</div>
-
-<div class="card" style="width: 15rem;">
-  <img src="./media/bu asna.jpg" class="card-img-top" style="height: 12rem; object-fit:cover;" alt="...">
-  <div class="card-body">
-    <p class="card-text"><h5>Endah Asnawati, S.Pd</h5>
-<p style="color: grey">ILMU PENGETAHUAN ALAM</p>
-  </div>
-</div>
-
-<div class="card" style="width: 15rem;">
-  <img src="./media/bu asna.jpg" class="card-img-top" style="height: 12rem; object-fit:cover;" alt="...">
-  <div class="card-body">
-    <p class="card-text"><h5>Endah Asnawati, S.Pd</h5>
-<p style="color: grey">ILMU PENGETAHUAN ALAM</p>
-  </div>
-</div>
+<?php
+        }
+    } else {
+        echo "<p>Belum ada Daftar Guru</p>";
+    }
+    $conn->close();
+    ?>
 
 
 
-</div>
 
 <div class="judul2">
     <h1>STAFF</h1>
 </div>
 
+
 <div class="staff">
-<div class="card" style="width: 15rem;">
-  <img src="./media/bu asna.jpg" class="card-img-top" style="height: 12rem; object-fit:cover;" alt="...">
-  <div class="card-body">
-    <p class="card-text"><h5>Endah Asnawati, S.Pd</h5>
-<p style="color: grey">ILMU PENGETAHUAN ALAM</p>
-  </div>
-</div>
-<div class="card" style="width: 15rem;">
-  <img src="./media/bu asna.jpg" class="card-img-top" style="height: 12rem; object-fit:cover;" alt="...">
-  <div class="card-body">
-    <p class="card-text"><h5>Endah Asnawati, S.Pd</h5>
-<p style="color: grey">ILMU PENGETAHUAN ALAM</p>
-  </div>
-</div>
-<div class="card" style="width: 15rem;">
-  <img src="./media/bu asna.jpg" class="card-img-top" style="height: 12rem; object-fit:cover;" alt="...">
-  <div class="card-body">
-    <p class="card-text"><h5>Endah Asnawati, S.Pd</h5>
-<p style="color: grey">ILMU PENGETAHUAN ALAM</p>
-  </div>
-</div>
-<div class="card" style="width: 15rem;">
-  <img src="./media/bu asna.jpg" class="card-img-top" style="height: 12rem; object-fit:cover;" alt="...">
-  <div class="card-body">
-    <p class="card-text"><h5>Endah Asnawati, S.Pd</h5>
-<p style="color: grey">ILMU PENGETAHUAN ALAM</p>
-  </div>
-</div>
-<div class="card" style="width: 15rem;">
-  <img src="./media/bu asna.jpg" class="card-img-top" style="height: 12rem; object-fit:cover;" alt="...">
-  <div class="card-body">
-    <p class="card-text"><h5>Endah Asnawati, S.Pd</h5>
-<p style="color: grey">ILMU PENGETAHUAN ALAM</p>
-  </div>
-</div>
-<div class="card" style="width: 15rem;">
-  <img src="./media/bu asna.jpg" class="card-img-top" style="height: 12rem; object-fit:cover;" alt="...">
-  <div class="card-body">
-    <p class="card-text"><h5>Endah Asnawati, S.Pd</h5>
-<p style="color: grey">ILMU PENGETAHUAN ALAM</p>
-  </div>
-</div>
-<div class="card" style="width: 15rem;">
-  <img src="./media/bu asna.jpg" class="card-img-top" style="height: 12rem; object-fit:cover;" alt="...">
-  <div class="card-body">
-    <p class="card-text"><h5>Endah Asnawati, S.Pd</h5>
-<p style="color: grey">ILMU PENGETAHUAN ALAM</p>
-  </div>
-</div>
-<div class="card" style="width: 15rem;">
-  <img src="./media/bu asna.jpg" class="card-img-top" style="height: 12rem; object-fit:cover;" alt="...">
-  <div class="card-body">
-    <p class="card-text"><h5>Endah Asnawati, S.Pd</h5>
-<p style="color: grey">ILMU PENGETAHUAN ALAM</p>
-  </div>
-</div>
-</div>
+<?php
+    include './admin/koneksi.php';
+    
+    // Fetch news from database
+    $sql = "SELECT * FROM staff ORDER BY date DESC";
+    $result = $conn->query($sql);
+    
+    if ($result->num_rows > 0) {
+        while($row = $result->fetch_assoc()) {
+    ?>
 
 
-<!--karyawan-->
+<div class="card" style="width: 15rem;">
+<img  src="./admin/media/<?php echo $row['image']; ?>" class="card-img-top" style="height: 12rem; object-fit:cover;" alt="...">
+  <div class="card-body">
+    <p class="card-text">
+    <b><?php echo nl2br($row['nim']); ?></b><br>
+    <b><?php echo nl2br($row['nama']); ?></b><br>
+    </p>
+  </div>
+</div>
+</div>
+<?php
+        }
+    } else {
+        echo "<p>Belum ada Daftar Staff</p>";
+    }
+    $conn->close();
+    ?>
+
+

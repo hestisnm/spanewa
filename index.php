@@ -246,7 +246,7 @@ break;
         <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
           <h5 class="text-uppercase mb-4 font-weight-bold text-white" style="text-underline-position: below;">TENTANG KAMI</h5>
           
-          <a style="color:white; text-decoration:none;" href="#"><hr class="my-4 border-warning" style="border-width: 3px;">
+          <a href="./etmin/feedback.php" style="color:white; text-decoration:none;" href="#"><hr class="my-4 border-warning" style="border-width: 3px;">
          Click disini<br>Bantu kami untuk memberikan pelayanan yang lebih baik</a>
         </div>
         </div>

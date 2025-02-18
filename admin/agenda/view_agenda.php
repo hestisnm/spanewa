@@ -7,7 +7,7 @@ $row = $result->fetch_assoc();
 
 ?>
 <h2><?php echo $row['title']; ?></h2>
-<img src="../media<?php echo $row['image']; ?>" width="500">
+<img src="upload/<?php echo $row['image']; ?>" width="500">
 <p><?php echo $row['content']; ?></p>
 <p><strong>Penulis:</strong> <?php echo $row['author']; ?></p>
 <p><strong>Tanggal:</strong> <?php echo $row['date']; ?></p>

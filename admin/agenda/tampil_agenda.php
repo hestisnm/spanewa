@@ -118,9 +118,9 @@ $result = $conn->query($sql);
                     <td><?php echo $row['author']; ?></td>
                     <td><?php echo $row['date']; ?></td>
                     <td>
-                        <a href="view_agenda.php?id=<?php echo $row['id']; ?>">Baca</a> |
-                        <a href="edit_agenda.php?id=<?php echo $row['id']; ?>">Edit</a> |
-                        <a href="dalate_agenda.php?id=<?php echo $row['id']; ?>" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">Delete</a>
+                        <a href="agenda/view_agenda.php?id=<?php echo $row['id']; ?>">Baca</a> |
+                        <a href="agenda/edit_agenda.php?id=<?php echo $row['id']; ?>">Edit</a> |
+                        <a href="agenda/dalate_agenda.php?id=<?php echo $row['id']; ?>" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">Delete</a>
                     </td>
                 </tr>
             <?php endwhile; ?>

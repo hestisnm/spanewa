@@ -1,5 +1,5 @@
 <?php
-include 'koneksi.php';
+include '../koneksi.php';
 if (isset($_POST['submit'])) {
     $title = $_POST['title'];
     // Upload gambar
@@ -9,7 +9,7 @@ if (isset($_POST['submit'])) {
         // Menyimpan data ke database
         $sql = "INSERT INTO agenda (title, image) VALUES ('$title', '$image')";
         if ($conn->query($sql) === TRUE) {
-            header("Location: tampil_agenda.php");
+            header("Location: ../?page=agenda");
         } else {
             echo "Error: " . $sql . "<br>" . $conn->error;
         }

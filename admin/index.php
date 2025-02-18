@@ -24,7 +24,7 @@ if (isset($_SESSION['admin_username'])) {
             position: fixed;
             top: 0;
             left: 0;
-            width: 200px;
+            width: 180px;
             height: 100vh;
             background: white;
             color: black;
@@ -113,7 +113,7 @@ $page = isset($_GET['page']) ? $_GET['page'] : 'dashboard';
         <a href="index.php?page=prestasi" class="<?= ($page == 'prestasi') ? 'active' : '' ?>"><i class="fas fa-trophy"></i>Prestasi</a>
         <a href="index.php?page=guru" class="<?= ($page == 'guru') ? 'active' : '' ?>"><i class="fas fa-chalkboard-teacher"></i>Guru</a>
         <a href="index.php?page=kepsek" class="<?= ($page == 'kepsek') ? 'active' : '' ?>"><i class="fas fa-chalkboard-teacher"></i>Staff</a>
-        <a href="index.php?page=staff" class="<?= ($page == 'staff') ? 'active' : '' ?>"><i class="fas fa-chalkboard-teacher"></i>Staff</a>
+        <a href="index.php?page=staff" class="<?= ($page == 'staff') ? 'active' : '' ?>"><i class="fas fa-chalkboard-teacher"></i>Kepsek</a>
         <a href="index.php?page=galeri" class="<?= ($page == 'galeri') ? 'active' : '' ?>"><i class="fas fa-images"></i>Galeri</a>
         <a href="index.php?page=feedback" class="<?= ($page == 'feedback') ? 'active' : '' ?>"><i class="fas fa-comments"></i>Saran</a>
         <a href="logout.php"><i class="fas fa-sign-out-alt"></i>Logout</a>
@@ -127,37 +127,37 @@ $page = isset($_GET['page']) ? $_GET['page'] : 'dashboard';
             include 'dashboard.php';
             break;
         case 'agenda':
-            include './agenda/tampil_agenda';
+            include 'agenda/tampil_agenda.php';
             break;
         case 'berita':
-            include './berita/tampil_berita.php';
+            include 'berita/tampil_berita.php';
             break;
         case 'ekstrakurikuler':
-            include './ekstrakurikuler/tampil_ekskul.php';
+            include 'ekstrakurikuler/tampil_ekskul.php';
             break;
         case 'fasilitas':
-            include './fasilitas/tampil_fasilitas.php';
+            include 'fasilitas/tampil_fasilitas.php';
             break;
         case 'karya':
-            include './karya_siswa/tampil_karya.php';
+            include 'karya_siswa/tampil_karya.php';
             break;
         case 'prestasi':
-            include './prestasi/tampil_prestasi.php';
+            include 'prestasi/tampil_prestasi.php';
             break;
         case 'guru':
-            include './guru/tampil_guru.php';
+            include 'guru/tampil_guru.php';
             break;
-        case 'guru':
-            include './kepsek/tampil_kepsek.php';
+        case 'kepsek':
+            include 'kepsek/tampil_kepsek.php';
             break;
         case 'staff':
-            include './staff/tampil_staff.php';
+            include 'staff/tampil_staff.php';
             break;
         case 'galeri':
-            include './galeri/tampil_galeri.php';
+            include 'galeri/tampil_galeri.php';
             break;
         case 'feedback':
-            include './feedback/tampil_feedback.php';
+            include 'feedback/tampil_feedback.php';
             break;
         default:
             echo "<p>Halaman tidak ditemukan!</p>";

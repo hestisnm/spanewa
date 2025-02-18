@@ -1,15 +1,13 @@
 <?php
-include '../koneksi.php';
+include 'koneksi.php';
 if (isset($_POST['submit'])) {
     $title = $_POST['title'];
-    $content = $_POST['content'];
-    $author = $_POST['author'];
     // Upload gambar
     $image = $_FILES['image']['name'];
-    $target = "../media" . basename($image);
+    $target = "upload/" . basename($image);
     if (move_uploaded_file($_FILES['image']['tmp_name'], $target)) {
         // Menyimpan data ke database
-        $sql = "INSERT INTO agenda (title, content, author, image) VALUES ('$title', '$content', '$author', '$image')";
+        $sql = "INSERT INTO agenda (title, image) VALUES ('$title', '$image')";
         if ($conn->query($sql) === TRUE) {
             header("Location: tampil_agenda.php");
         } else {
@@ -26,12 +24,6 @@ if (isset($_POST['submit'])) {
     <form method="POST" action="" enctype="multipart/form-data">
         <label for="title">Judul:</label>
         <input type="text" id="title" name="title" required>
-
-        <label for="content">Konten:</label>
-        <textarea id="content" name="content" required></textarea>
-
-        <label for="author">Penulis:</label>
-        <input type="text" id="author" name="author" required>
 
         <label for="image">Gambar:</label>
         <input type="file" id="image" name="image" required>

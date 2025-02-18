@@ -1,5 +1,5 @@
 <?php
-include '../koneksi.php';
+include 'koneksi.php';
 $sql = "SELECT * FROM agenda ORDER BY date DESC";
 $result = $conn->query($sql);
 ?>
@@ -99,7 +99,7 @@ $result = $conn->query($sql);
 <body>
     <div class="container">
         <h2>Berita Terkini</h2>
-        <a href="create_agenda.php">Tambah Agenda</a>
+        <a href="agenda/create_agenda.php">Tambah Agenda</a>
         <table>
             <tr>
                 <th>No</th>
@@ -113,7 +113,7 @@ $result = $conn->query($sql);
             <?php while($row = $result->fetch_assoc()): ?>
                 <tr>
                     <td><?php echo $no++; ?></td>
-                    <td><img src="../media/?php echo $row['image']; ?>" width="100"></td>
+                    <td><img src="agenda/upload/<?php echo $row['image']; ?>" width="100"></td>
                     <td><?php echo $row['title']; ?></td>
                     <td><?php echo $row['author']; ?></td>
                     <td><?php echo $row['date']; ?></td>

@@ -1,13 +1,5 @@
 <?php
-session_start();
-if (!isset($_SESSION['login'])) {
-    header("Location: login.php");
-    exit;
-}
-?>
-
-<?php
-include '../koneksi.php';
+include 'koneksi.php';
 $sql = "SELECT * FROM news ORDER BY date DESC";
 $result = $conn->query($sql);
 ?>

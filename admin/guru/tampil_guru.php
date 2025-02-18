@@ -1,5 +1,5 @@
 <?php
-include '../koneksi.php';
+include 'koneksi.php';
 $sql = "SELECT * FROM guru ORDER BY date DESC";
 $result = $conn->query($sql);
 ?>

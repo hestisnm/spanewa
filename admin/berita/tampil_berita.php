@@ -99,7 +99,7 @@ $result = $conn->query($sql);
 <body>
     <div class="container">
         <h2>Berita Terkini</h2>
-        <a href="create_berita.php">Tambah Berita</a>
+        <a href="berita/create_berita.php">Tambah Berita</a>
         <table>
             <tr>
                 <th>No</th>

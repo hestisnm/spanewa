@@ -99,7 +99,7 @@ $result = $conn->query($sql);
 <body>
     <div class="container">
         <h2>Data Guru</h2>
-        <a href="create_guru.php">Tambah Guru</a>
+        <a href="guru/create_guru.php">Tambah Guru</a>
         <table>
             <tr>
                 <th>No</th>

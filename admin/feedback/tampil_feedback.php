@@ -94,7 +94,7 @@ $result = $conn->query($sql);
 
 <div class="container">
     <h2>Berita Terkini</h2>
-    <a href="create_feedback.php">Tambah Berita</a>
+    <a href="feedback/create_feedback.php">Tambah Berita</a>
     <table>
         <tr>
             <th>No</th>

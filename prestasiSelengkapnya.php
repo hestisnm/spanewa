@@ -9,38 +9,97 @@
             <div class="judul">
             <h2><B>Prestasi Siswa Siswi SPANEWA</B></h2> 
             </div>
-            </div>
-
-            <div style="display:flex; margin:40px; gap:20px;" class="konten">
-    <img style="width:300px; height:auto; border-radius:10px;" src="./media/prestasi taekwondo .jpg">
-    <div>
-        <h1>Cabang Lomba Taekwondo</h1>
-        <p id="tanggal-pembuatan" style="font-size:14px; color:gray;"></p>
     </div>
-    <img style="width:400px; height:auto;" src="./media/prestasi.png">
+
+    <?php
+include './admin/koneksi.php';
+
+// Ambil ID berita dari URL
+$id = isset($_GET['id']) ? intval($_GET['id']) : 0;
+
+// Ambil berita berdasarkan ID
+$sql = "SELECT * FROM prestasi WHERE id = $id";
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+    $row = $result->fetch_assoc();
+?>
+
+<div style="display: flex; margin: 40px; gap: 20px; align-items: center;" class="konten">
+    <img style="width: 400px; height: auto;" src="./admin/prestasi/upload/<?php echo $row['image']; ?>">
+    <div>
+        <h1><?= nl2br($row['title']); ?></h1>
+        <p style="font-size: 14px; color: gray;">
+            Dibuat pada: <?php echo date('d F Y', strtotime($row['date'])); ?><br>
+            Oleh: <?= $row['author']; ?>
+        </p>
+    </div>
+    <img style="width: 400px; height: auto;" src="./media/prestasi.png">
 </div>
 
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-    const tanggalPembuatan = new Date().toLocaleDateString("id-ID", {
-        year: "numeric",
-        month: "long",
-        day: "numeric"
-    });
+<!-- Menampilkan isi konten berita keseluruhan -->
+<div style="margin: 40px; margin-top: 10px;" class="text">
+    <?= nl2br($row['content']); ?>
+    
+<?php
+} else {
+    echo "<p>Prestasi tidak ditemukan.</p>";
+}
 
-    document.getElementById("tanggal-pembuatan").textContent = `Dibuat pada: ${tanggalPembuatan}`;
-});
-</script>
+$conn->close();
+?>
+</div>
 
-<div style="margin:40px; margin-top:5px;" class="text">           
-    Lorem Ipsum Dolor Sit Amet
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Poppins', sans-serif;
+        scroll-behavior: smooth;
+    }
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.  
+    body {
+        background-color: white;
+        font-family: 'Poppins';
+    }
 
-Suspendisse potenti. Nulla facilisi. Fusce convallis metus id felis tincidunt, non vulputate est eleifend. Maecenas accumsan, nisl vel aliquet interdum, magna odio fermentum turpis, nec condimentum risus justo et massa. Vivamus tincidunt, lorem eget cursus tincidunt, velit odio viverra ligula, sed dapibus nisi mauris vel metus. Ut nec felis non turpis rhoncus feugiat. Donec porta ipsum sit amet nulla volutpat fermentum. Mauris vel turpis in lorem sollicitudin dictum.  
+    .back-button {
+        background-color: #161D6F;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background-color 0.3s ease, transform 0.3s ease;
+        position: fixed;
+        top: 20px;
+        left: 20px;
+        z-index: 1000;
+    }
 
-Curabitur euismod lorem nec nunc scelerisque, et fringilla ligula feugiat. Vestibulum euismod, orci ut vestibulum consectetur, felis ex vehicula quam, non luctus arcu nunc eget neque. Nulla facilisi. Aenean fermentum, mi ut pellentesque viverra, felis felis sollicitudin justo, a dignissim nulla sem et dolor. Cras sit amet odio sapien. Morbi tristique nisi at tortor ultricies, at gravida turpis faucibus. Suspendisse potenti. Integer interdum, nisi a interdum varius, justo urna tincidunt est, eget gravida mi libero non neque.  
+    .back-button:hover {
+        background-color: #0F145A;
+        transform: scale(1.05);
+    }
 
-Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Duis blandit, justo sed tincidunt sodales, erat dui facilisis ligula, vel vehicula ligula mauris sit amet mauris. Proin consequat justo ut lorem efficitur, sed facilisis magna rhoncus. Sed sit amet felis vel lectus vulputate ullamcorper. Ut feugiat dolor a arcu scelerisque, nec fringilla felis vehicula.  
+    .judul {
+        color: white;
+        position: absolute;
+        z-index: 2;
+        top: 30%;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 1rem;
+    }
 
-</div> 
+    .text {
+        margin-bottom: 30px;
+        font-size: 16px;
+        color: #828893;
+        line-height: 26px;
+    }
+</style>

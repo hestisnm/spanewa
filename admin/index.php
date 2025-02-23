@@ -12,6 +12,7 @@ if (isset($_SESSION['admin_username'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sidebar Admin Dinamis</title>
+    <link rel="shortcut icon" href="admin_icon.png" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
@@ -24,7 +25,7 @@ if (isset($_SESSION['admin_username'])) {
             position: fixed;
             top: 0;
             left: 0;
-            width: 180px;
+            width: 200px;
             height: 100vh;
             background: white;
             color: black;
@@ -80,6 +81,7 @@ if (isset($_SESSION['admin_username'])) {
         .menu a:hover, .menu a.active {
             background-color: rgb(174, 179, 234);
             color: black;
+            text-decoration: none;
         }
 
         .menu i {
@@ -105,15 +107,16 @@ $page = isset($_GET['page']) ? $_GET['page'] : 'dashboard';
     </div>
     <div class="menu">
         <a href="index.php?page=dashboard" class="<?= ($page == 'dashboard') ? 'active' : '' ?>"><i class="fas fa-chart-bar"></i>Dashboard</a>
+        <a href="index.php?page=banner" class="<?= ($page == 'banner') ? 'active' : '' ?>"><i class="fas fa-images"></i>Banner</a>
         <a href="index.php?page=agenda" class="<?= ($page == 'agenda') ? 'active' : '' ?>"><i class="fas fa-calendar-alt"></i>Agenda</a>
         <a href="index.php?page=berita" class="<?= ($page == 'berita') ? 'active' : '' ?>"><i class="fas fa-newspaper"></i>Berita</a>
-        <a href="index.php?page=ekstrakurikuler" class="<?= ($page == 'ekstrakurikuler') ? 'active' : '' ?>"><i class="fas fa-users"></i>Ekstrakurikuler</a>
+        <a href="index.php?page=ekskul" class="<?= ($page == 'ekskul') ? 'active' : '' ?>"><i class="fas fa-users"></i>Ekstrakurikuler</a>
         <a href="index.php?page=fasilitas" class="<?= ($page == 'fasilitas') ? 'active' : '' ?>"><i class="fas fa-tools"></i>Fasilitas</a>
-        <a href="index.php?page=karya" class="<?= ($page == 'karya_siswa') ? 'active' : '' ?>"><i class="fas fa-paint-brush"></i>Karya Siswa</a>
+        <a href="index.php?page=karya_siswa" class="<?= ($page == 'karya_siswa') ? 'active' : '' ?>"><i class="fas fa-paint-brush"></i>Karya Siswa</a>
         <a href="index.php?page=prestasi" class="<?= ($page == 'prestasi') ? 'active' : '' ?>"><i class="fas fa-trophy"></i>Prestasi</a>
         <a href="index.php?page=guru" class="<?= ($page == 'guru') ? 'active' : '' ?>"><i class="fas fa-chalkboard-teacher"></i>Guru</a>
-        <a href="index.php?page=kepsek" class="<?= ($page == 'kepsek') ? 'active' : '' ?>"><i class="fas fa-chalkboard-teacher"></i>Staff</a>
-        <a href="index.php?page=staff" class="<?= ($page == 'staff') ? 'active' : '' ?>"><i class="fas fa-chalkboard-teacher"></i>Kepsek</a>
+        <a href="index.php?page=staff" class="<?= ($page == 'staff') ? 'active' : '' ?>"><i class="fas fa-chalkboard-teacher"></i>Staff</a>
+        <a href="index.php?page=kepsek" class="<?= ($page == 'kepsek') ? 'active' : '' ?>"><i class="fas fa-chalkboard-teacher"></i>Kepsek</a>
         <a href="index.php?page=galeri" class="<?= ($page == 'galeri') ? 'active' : '' ?>"><i class="fas fa-images"></i>Galeri</a>
         <a href="index.php?page=feedback" class="<?= ($page == 'feedback') ? 'active' : '' ?>"><i class="fas fa-comments"></i>Saran</a>
         <a href="logout.php"><i class="fas fa-sign-out-alt"></i>Logout</a>
@@ -126,19 +129,22 @@ $page = isset($_GET['page']) ? $_GET['page'] : 'dashboard';
         case 'dashboard':
             include 'dashboard.php';
             break;
+        case 'banner':
+            include 'banner/tampil_banner.php';
+            break;
         case 'agenda':
             include 'agenda/tampil_agenda.php';
             break;
         case 'berita':
             include 'berita/tampil_berita.php';
             break;
-        case 'ekstrakurikuler':
-            include 'ekstrakurikuler/tampil_ekskul.php';
+        case 'ekskul':
+            include 'ekskul/tampil_ekskul.php';
             break;
         case 'fasilitas':
             include 'fasilitas/tampil_fasilitas.php';
             break;
-        case 'karya':
+        case 'karya_siswa':
             include 'karya_siswa/tampil_karya.php';
             break;
         case 'prestasi':

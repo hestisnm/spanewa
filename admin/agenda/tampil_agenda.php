@@ -1,5 +1,5 @@
 <?php
-include 'koneksi.php';
+include __DIR__ . '/../koneksi.php';
 $sql = "SELECT * FROM agenda ORDER BY date DESC";
 $result = $conn->query($sql);
 ?>
@@ -15,7 +15,7 @@ $result = $conn->query($sql);
             padding: 40px;
             border-radius: 10px;
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-            max-width: 1200px;
+            max-width: 900px;
             margin: 20px auto;
             animation: fadeIn 0.5s ease;
         }
@@ -26,7 +26,7 @@ $result = $conn->query($sql);
         }
 
         table {
-            width: 100%;
+            width: 900px;
             border-collapse: collapse;
             margin-top: 20px;
             background: white;
@@ -98,14 +98,13 @@ $result = $conn->query($sql);
 </head>
 <body>
     <div class="container">
-        <h2>Berita Terkini</h2>
+        <h2>Agenda Terkini</h2>
         <a href="agenda/create_agenda.php">Tambah Agenda</a>
         <table>
             <tr>
                 <th>No</th>
                 <th>Gambar</th>
-                <th>Judul</th>
-                <th>Penulis</th>
+                <th>Nama Agenda</th>
                 <th>Tanggal</th>
                 <th>Aksi</th>
             </tr>
@@ -115,12 +114,11 @@ $result = $conn->query($sql);
                     <td><?php echo $no++; ?></td>
                     <td><img src="agenda/upload/<?php echo $row['image']; ?>" width="100"></td>
                     <td><?php echo $row['title']; ?></td>
-                    <td><?php echo $row['author']; ?></td>
                     <td><?php echo $row['date']; ?></td>
                     <td>
-                        <a href="view_agenda.php?id=<?php echo $row['id']; ?>">Baca</a> |
-                        <a href="edit_agenda.php?id=<?php echo $row['id']; ?>">Edit</a> |
-                        <a href="dalate_agenda.php?id=<?php echo $row['id']; ?>" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">Delete</a>
+                        <a href="agenda/view_agenda.php?id=<?php echo $row['id']; ?>">Baca</a> |
+                        <a href="agenda/edit_agenda.php?id=<?php echo $row['id']; ?>">Edit</a> |
+                        <a href="agenda/dalate_agenda.php?id=<?php echo $row['id']; ?>" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">Delete</a>
                     </td>
                 </tr>
             <?php endwhile; ?>

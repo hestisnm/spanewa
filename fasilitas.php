@@ -18,7 +18,7 @@ if ($resultf->num_rows > 0) {
         ?>
 <div class="facilities-grid">
 <div class="facility-card">
-<img src="./admin/media/<?php echo $row['image']; ?>">
+<img src="./admin/fasilitas/upload/<?php echo $row['image']; ?>">
 <h2><?php echo nl2br($row ['title']); ?></h2>
 </div>
 </div>

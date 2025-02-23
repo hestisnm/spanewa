@@ -2,7 +2,6 @@
 
     <link href="home.css" rel="stylesheet">
 </head>
-<body>
     <div class="banner">
         <div class="gambar1">
             <img src="./media/Wireframe - 5 (5).png">
@@ -144,12 +143,13 @@ window.addEventListener('load', () => {
     };
 </script>
 
-<<!-- berita -->
+<!-- berita -->
     <h3 style="font-size: 3vw;
     text-align: center;
     margin-top: 4vh;
     color: #161D6F;
     font-weight: bold;">BERITA TERKINI</h3>
+
 <div class="banyak">
     
     <?php
@@ -163,7 +163,7 @@ window.addEventListener('load', () => {
         while($row = $result->fetch_assoc()) {
     ?>
         <div class="foto2">
-            <img src="./admin/media/<?php echo $row['image']; ?>">
+            <img src="./admin/berita/upload/<?php echo $row['image']; ?>">
             <div class="text2">
                 <p>
                     <b><?php echo nl2br($row['title']); ?></b><br>
@@ -174,6 +174,7 @@ window.addEventListener('load', () => {
                 </p>
             </div>
         </div>
+</div>
     <?php
         }
     } else {
@@ -183,8 +184,7 @@ window.addEventListener('load', () => {
     ?>
     <div  class="lebih-banyak">
     <a href="index.php?page=berita">
-        <button style="text-align: center; padding: 10px; background-color: #0B2F9F; color: white;" class="cta-button1">BACA BERITA LAINNYA</button></a>
-</div>
+        <button style="text-align: center; padding: 10px; background-color: #0B2F9F; color: white; margin-left: 43%;" class="cta-button1">BACA BERITA LAINNYA</button></a>
 </div>
 
 
@@ -250,6 +250,7 @@ window.addEventListener('load', () => {
         font-size: 12px;
     }
 </style>
+</div>
 
 
 <!-- galeri -->
@@ -258,41 +259,37 @@ window.addEventListener('load', () => {
     margin-top: 4vh;
     color: #161D6F;
     font-weight: bold;">GALERI</h3>
-<div class="banyak">
 
-<?php
+<div class="tiga">
+            <?php
     include './admin/koneksi.php';
     
     // Fetch news from database
-    $sqlg = "SELECT * FROM galeri ORDER BY date DESC LIMIT 6";
-    $resultg = $conn->query($sqlg);
+    $sql = "SELECT * FROM galeri ORDER BY date DESC";
+    $result = $conn->query($sql);
     
-    if ($resultg->num_rows > 0) {
+    if ($result->num_rows > 0) {
         while($row = $result->fetch_assoc()) {
     ?>
 
-    <h3><?php echo nl2br($row['title']); ?></h3>
+<div class="persegi">
+    <div class="wanpik">
+    <img class="pik" src="./admin/galeri/upload/<?php echo $row['image']; ?>">
+    <div class="text-overlay-container">
+    <div class="text-overlay">
+    <p><?php echo nl2br($row['title']); ?></p>
+    <p><?php echo date('d F Y', strtotime($row['date'])); ?></p>
+                </div>
+    </div>
+    </div>
 </div>
 
-<div class="tiga">
-    <div class="persegi">
-        <div class="wanpik">
-            <img src="./admin/media/<?php echo $row['image']; ?>">
-            <div class="text-overlay-container">
-                <div class="text-overlay">
-                <?php echo nl2br($row['title']); ?>
-            </div>
-            </div>
-        </div>
-    </div>
-    <?php
+<?php
         }
-    } else {
-        echo "<p>Belum ada fotoyang ditambahkan.</p>";
-    }
+    } else 
     $conn->close();
     ?>
-    </div>
+
 
     <style>
     @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
@@ -379,3 +376,4 @@ window.addEventListener('load', () => {
     opacity: 1;
 }
 </style>
+</div>

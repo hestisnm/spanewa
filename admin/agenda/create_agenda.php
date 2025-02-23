@@ -1,5 +1,5 @@
 <?php
-include 'koneksi.php';
+include '../koneksi.php';
 if (isset($_POST['submit'])) {
     $title = $_POST['title'];
     // Upload gambar
@@ -9,7 +9,7 @@ if (isset($_POST['submit'])) {
         // Menyimpan data ke database
         $sql = "INSERT INTO agenda (title, image) VALUES ('$title', '$image')";
         if ($conn->query($sql) === TRUE) {
-            header("Location: tampil_agenda.php");
+            header("Location: ../?page=agenda");
         } else {
             echo "Error: " . $sql . "<br>" . $conn->error;
         }
@@ -18,6 +18,10 @@ if (isset($_POST['submit'])) {
     }
 }
 ?>
+
+<body>
+<div class="bg-deco-1"></div>
+<div class="bg-deco-2"></div>
 
 <div class="form-container">
     <h2>Tambah Agenda Baru</h2>
@@ -32,43 +36,106 @@ if (isset($_POST['submit'])) {
     </form>
 </div>
 
+
 <style>
+    body {
+        background: linear-gradient(135deg, rgba(139, 161, 227, 0.2), rgba(174, 179, 234, 0.4));
+        font-family: 'Poppins', sans-serif;
+        margin: 0;
+        padding: 0;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+    }
+
+    /* Dekorasi */
+    .bg-deco-1 {
+        position: absolute;
+        top: 60px;
+        left: 60px;
+        width: 250px;
+        height: 250px;
+        background: rgba(139, 161, 227, 0.3);
+        border-radius: 50%;
+        z-index: 0;
+    }
+
+    .bg-deco-2 {
+        position: absolute;
+        bottom: 60px;
+        right: 60px;
+        width: 180px;
+        height: 180px;
+        background: rgba(139, 161, 227, 0.2);
+        border-radius: 50%;
+        z-index: 0;
+    }
+
     .form-container {
         background: white;
-        padding: 30px;
-        border-radius: 10px;
-        box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-        font-family: 'Poppins', sans-serif;
-        max-width: 500px;
-        margin: 30px auto;
+        padding: 25px;
+        border-radius: 12px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        max-width: 400px;
+        width: 100%;
+        position: relative;
+        z-index: 1;
     }
+
     h2 {
-        color: #333;
+        color: rgb(75, 95, 170);
+        font-size: 24px;
+        text-align: center;
     }
+
     label {
         display: block;
-        margin-top: 10px;
-        font-weight: bold;
+        margin-top: 12px;
+        font-weight: 600;
+        color: #333;
+        font-size: 14px;
     }
+
     input[type="text"],
     textarea,
     input[type="file"] {
         width: 100%;
-        padding: 10px;
+        padding: 12px;
         margin-top: 5px;
-        border: 1px solid #ddd;
-        border-radius: 5px;
+        border: 1px solid #d1d1d1;
+        border-radius: 8px;
+        background-color: #f9f9f9;
+        transition: 0.3s ease;
     }
+
+    input[type="text"]:focus,
+    textarea:focus,
+    input[type="file"]:focus {
+        border-color: rgb(139, 161, 227);
+        background-color: #ffffff;
+        outline: none;
+        box-shadow: 0 0 5px rgba(139, 161, 227, 0.5);
+    }
+
     button {
-        margin-top: 15px;
-        background-color: #4CAF50;
+        margin-top: 20px;
+        background-color: rgb(139, 161, 227);
         color: white;
         border: none;
-        padding: 10px 15px;
-        border-radius: 5px;
+        padding: 12px;
+        border-radius: 8px;
         cursor: pointer;
+        font-size: 14px;
+        font-weight: 600;
+        transition: background-color 0.3s ease;
+        width: 100%;
     }
+
     button:hover {
-        background-color: #45a049;
+        background-color: rgb(120, 140, 210);
     }
+
+
 </style>

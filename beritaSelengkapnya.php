@@ -13,53 +13,49 @@
         <h2><b>Berita</b></h2>
     </div>
 </div>
+
+
 <?php
-include './admin/koneksi.php';
+    include './admin/koneksi.php';
+    
+    // Ambil ID berita dari URL
+    $id = isset($_GET['id']) ? intval($_GET['id']) : 0;
 
-// Ambil ID berita dari URL
-$id = isset($_GET['id']) ? intval($_GET['id']) : 0;
-
-// Fetch berita berdasarkan ID
-$sql = "SELECT * FROM news WHERE id = ?";
-$stmt = $conn->prepare($sql);
-$stmt->bind_param('i', $id);
-$stmt->execute();
-$result = $stmt->get_result();
-
-if ($result->num_rows > 0) {
-    $berita = $result->fetch_assoc();
-
-    // Ambil gambar slider dari kolom image_slider, split jadi array
-    $images = [];
-    if (!empty($berita['image_slider'])) {
-        $images = explode(',', $berita['image_slider']);
-        // Tambahkan path ke folder gambar
-        foreach ($images as &$img) {
-            $img = './admin/media/' . trim($img);
-        }
-    }
-} else {
-    echo "<p>Berita tidak ditemukan.</p>";
-    exit;
-}
+    // Ambil berita berdasarkan ID
+    $sql = "SELECT * FROM news WHERE id = $id";
+    $result = $conn->query($sql);
+    
+    if ($result->num_rows > 0) {
+        $row = $result->fetch_assoc();
 ?>
 
 <div class="image-container-wrapper">
     <div class="image-container">
-        <?php
-        for ($i = 0; $i < 2; $i++) :
-            foreach ($images as $image) :
-        ?>
-                <div class="image-item">
-                    <img src="<?= $image; ?>" alt="Gambar Berita">
-                </div>
-        <?php
-            endforeach;
-        endfor;
-        ?>
+    <?php
+// Tentukan direktori tempat gambar disimpan
+$directory = "./admin/berita/upload/";
+
+// Baca semua file dalam direktori
+$images = array_diff(scandir($directory), array('..', '.')); // Menghapus . dan .. untuk hanya mengambil gambar
+
+// Buat array untuk menyimpan path gambar
+$imagePaths = [];
+
+// Iterasi untuk membuat path lengkap dari setiap gambar yang ada di folder
+foreach ($images as $image) {
+    // Pastikan hanya file gambar yang diambil (misalnya dengan ekstensi .jpg, .png, .jpeg)
+    if (in_array(pathinfo($image, PATHINFO_EXTENSION), ['jpg', 'jpeg', 'png'])) {
+        $imagePaths[] = $directory . $image;
+    }
+}
+// Menampilkan gambar-gambar yang ditemukan
+foreach ($imagePaths as $imagePath) {
+    echo '<img src="' . $imagePath . '" alt="Gambar" style="width: 300px; height:140px; object-fit:cover; margin: 2px;">';
+}
+?>
+       
     </div>
 </div>
-
 
 <style>
 .image-container-wrapper {
@@ -93,19 +89,28 @@ if ($result->num_rows > 0) {
 }
 </style>
 
+<!-- Konten utama berita -->
 <div style="display:flex; margin:40px; gap:20px;" class="konten">
-    <img style="width:300px; height:200px; border-radius:10px;" src="./admin/media/<?= $berita['image']; ?>">
+    <img style="width:auto; height:200px; border-radius:10px;" src="./admin/berita/upload/<?php echo $row['image']; ?>">
     <div>
-        <h1><?= nl2br($berita['title']); ?></h1>
-        <p><?= nl2br($berita['content']); ?></p>
-        <p style="font-size:14px; color:gray;">Dibuat pada: <?= date('d F Y', strtotime($berita['date'])); ?> | Oleh: <?= $berita['author']; ?></p>
+        <h1><?= nl2br($row['title']); ?></h1>
+        <p style="font-size:14px; color:gray;">
+            Dibuat pada: <? echo date('d F Y', strtotime($row['date'])); ?><br>
+            Oleh: <?= $row['author']; ?>
+        </p> 
     </div>
+    <img style="width:400px; height:auto; margin-right:0; display:block;" src="./media/prestasi.png">
 </div>
 
+<!-- Menampilkan isi konten berita keseluruhan -->
 <div style="margin:40px; margin-top:10px;" class="text">           
-    <?= nl2br($berita['selengkapnya']); ?>
+    <?= nl2br($row['content']); ?>
 </div>
 
 <?php
-$conn->close();
+    } else {
+        echo "<p>Berita tidak ditemukan.</p>";
+    }
+
+    $conn->close();
 ?>

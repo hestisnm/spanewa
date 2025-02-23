@@ -1,5 +1,5 @@
 <?php
-include 'koneksi.php';
+include __DIR__ . '/../koneksi.php';
 $sql = "SELECT * FROM galeri ORDER BY date DESC";
 $result = $conn->query($sql);
 ?>
@@ -8,14 +8,14 @@ $result = $conn->query($sql);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Galeri Terkini</title>
+    <title>galeri Terkini</title>
     <style>
         .container {
             background: white;
             padding: 40px;
             border-radius: 10px;
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-            max-width: 1200px;
+            max-width: 900px;
             margin: 20px auto;
             animation: fadeIn 0.5s ease;
         }
@@ -26,7 +26,7 @@ $result = $conn->query($sql);
         }
 
         table {
-            width: 100%;
+            width: 900px;
             border-collapse: collapse;
             margin-top: 20px;
             background: white;
@@ -98,14 +98,14 @@ $result = $conn->query($sql);
 </head>
 <body>
     <div class="container">
-        <h2>Galeri Terkini</h2>
-        <a href="galeri/create_galeri.php">Tambah Galeri</a>
+        <h2>Berita Terkini</h2>
+        <a href="galeri/create_galeri.php">Tambah galeri</a>
         <table>
             <tr>
                 <th>No</th>
                 <th>Gambar</th>
                 <th>Judul</th>
-                <th>Penulis</th>
+                <th>Penerbit</th>
                 <th>Tanggal</th>
                 <th>Aksi</th>
             </tr>
@@ -113,14 +113,14 @@ $result = $conn->query($sql);
             <?php while($row = $result->fetch_assoc()): ?>
                 <tr>
                     <td><?php echo $no++; ?></td>
-                    <td><img src="../media/<?php echo $row['image']; ?>" width="100"></td>
+                    <td><img src="galeri/upload/<?php echo $row['image']; ?>" width="100"></td>
                     <td><?php echo $row['title']; ?></td>
                     <td><?php echo $row['author']; ?></td>
                     <td><?php echo $row['date']; ?></td>
                     <td>
-                        <a href="view_galeri.php?id=<?php echo $row['id']; ?>">Baca</a> |
-                        <a href="edit_galeri.php?id=<?php echo $row['id']; ?>">Edit</a> |
-                        <a href="delete_galeri.php?id=<?php echo $row['id']; ?>" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">Delete</a>
+                        <a href="galeri/view_galeri.php?id=<?php echo $row['id']; ?>">Baca</a> |
+                        <a href="galeri/edit_galeri.php?id=<?php echo $row['id']; ?>">Edit</a> |
+                        <a href="galeri/dalate_galeri.php?id=<?php echo $row['id']; ?>" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">Delete</a>
                     </td>
                 </tr>
             <?php endwhile; ?>

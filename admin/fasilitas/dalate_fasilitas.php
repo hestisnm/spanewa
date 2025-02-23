@@ -1,10 +1,10 @@
 <?php
 include '../koneksi.php';
 $id = $_GET['id'];
-$sql = "DELETE FROM news WHERE id=$id";
+$sql = "DELETE FROM fasilitas WHERE id=$id";
 if ($conn->query($sql) === TRUE) {
-header("Location: tampil_fasilitas.php");
+    header("Location: ../?page=fasilitas");
 } else {
-echo "Error: " . $conn->error;
+    echo "Error: " . $conn->error;
 }
 ?>

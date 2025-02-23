@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="./media/logo_spanewa-removebg-preview (1).png" type="image/x-icon">
     <link href="index.css" rel="stylesheet">
     <script src="search.js" defer></script>
 
@@ -73,11 +74,43 @@
         <li class="nav-item ps-2 pe-3">
         <a class="nav-link" href="index.php?page=galeri">GALERI</a>
         </li>
-       <form class="d-flex" role="/search" method:"get">
-        <input  style="width:180px;" class="form-control me-2" type="search" placeholder="Cari" aria-label="Search" >
+      <!-- HTML Form -->
+<div id="searchPopup">
+    <form class="d-flex" role="search" method="get" action="/search" id="searchForm">
+        <input id="searchInput" style="width:180px;" class="form-control me-2" type="search" placeholder="Cari" aria-label="Search" name="query">
         <button class="btn btn-outline-primary" type="submit">Cari</button>
+    </form>
+</div>
 
-      </form>
+<!-- JavaScript -->
+<script>
+function openSearchPopup() {
+    const popup = document.getElementById('searchPopup');
+    popup.style.display = 'flex';  // Menampilkan popup
+
+    const searchInput = popup.querySelector('#searchInput');
+    if (searchInput) {
+        searchInput.focus();
+    }
+}
+
+function closeSearchPopup() {
+    const popup = document.getElementById('searchPopup');
+}
+
+document.addEventListener('click', function(event) {
+    const popup = document.getElementById('searchPopup');
+    const form = document.getElementById('searchForm');
+    
+   
+});
+
+document.addEventListener('keydown', function(event) {
+    if (event.key === 'Escape') {
+        closeSearchPopup();
+    }
+});
+</script>
       </ul>
     </div>
   </div>
@@ -246,7 +279,7 @@ break;
         <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
           <h5 class="text-uppercase mb-4 font-weight-bold text-white" style="text-underline-position: below;">TENTANG KAMI</h5>
           
-          <a href="./etmin/feedback.php" style="color:white; text-decoration:none;" href="#"><hr class="my-4 border-warning" style="border-width: 3px;">
+          <a href="./admin/feedback/feedback.php" style="color:white; text-decoration:none;" href="#"><hr class="my-4 border-warning" style="border-width: 3px;">
          Click disini<br>Bantu kami untuk memberikan pelayanan yang lebih baik</a>
         </div>
         </div>
@@ -272,8 +305,5 @@ break;
   </div>
  </footer>
  <!-- akhir footer -->
-
-
-
   </body>
 </html>

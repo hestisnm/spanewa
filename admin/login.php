@@ -1,4 +1,4 @@
-<?php 
+<?php
 session_start();
 
 include("koneksi.php");
@@ -31,72 +31,194 @@ if (isset($_POST['login'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Admin</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: rgb(139, 161, 227);
-            margin: 0;
-            padding: 0;
-            display: flex;
-            height: 100vh;
-            justify-content: center;
-            align-items: center;
-        }
-        .login-container {
-            background: #ffffff;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        .login-container img {
-            width: 100px;
-            margin-bottom: 15px;
-        }
-        .input-field {
-            width: 100%;
-            padding: 10px;
-            margin: 10px 0;
-            border: 1px solid rgb(139, 161, 227);
-            border-radius: 8px;
-        }
-        .btn-login {
-            background-color: rgb(139, 161, 227);
-            color: white;
-            border: none;
-            padding: 10px;
-            border-radius: 8px;
-            cursor: pointer;
-            width: 100%;
-            transition: background-color 0.3s;
-        }
-        .btn-login:hover {
-            background-color: rgb(109, 130, 206);
-        }
-        .error-message {
-            color: red;
-            margin-bottom: 10px;
-        }
-    </style>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
 </head>
-<body>
-    <div class="login-container">
-        <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Admin Icon">
-        <h3>Login Admin</h3>
-        <?php if ($err): ?>
-            <div class="error-message">
-                <ul><?php echo $err; ?></ul>
+<body class="bg-blue-100 flex items-center justify-center min-h-screen">
+    <div class="bg-white rounded-lg shadow-lg flex max-w-4xl w-full">
+        <!-- Left Side - Login Form -->
+        <div class="w-1/2 p-8">
+            <div class="flex items-center mb-8">
+                <img alt="Logo" class="mr-2" height="40" src="admin_icon.png" width="40"/>
+                <h1 class="text-2xl font-bold">Login Admin</h1>
             </div>
-        <?php endif; ?>
-        <form action="" method="post">
-            <input type="text" class="input-field" name="username" placeholder="Username" value="<?php echo htmlspecialchars($username); ?>">
-            <input type="password" class="input-field" name="password" placeholder="Password">
-            <button type="submit" class="btn-login" name="login">Masuk</button>
-        </form>
+
+            <?php if ($err): ?>
+                <div class="bg-red-100 text-red-700 p-4 mb-4 rounded-lg">
+                    <ul><?php echo $err; ?></ul>
+                </div>
+            <?php endif; ?>
+
+            <form action="" method="post">
+                <div class="mb-4">
+                    <label class="block text-gray-700">Username</label>
+                    <input type="text" name="username" class="w-full border border-gray-300 p-2 rounded-lg" placeholder="Username" value="<?php echo htmlspecialchars($username); ?>" required>
+                </div>
+                <div class="mb-4">
+                    <label class="block text-gray-700">Password</label>
+                    <input type="password" name="password" class="w-full border border-gray-300 p-2 rounded-lg" placeholder="Password" required>
+                </div>
+                <button type="submit" name="login" class="w-full bg-blue-700 text-white py-2 px-4 rounded-lg flex items-center justify-center">
+                    Log in
+                    <i class="fas fa-arrow-right ml-2"></i>
+                </button>
+            </form>
+        </div>
+
+        <!-- Right Side - Information Section -->
+        <div class="w-1/2 bg-white  p-8 rounded-r-lg flex flex-col justify-center items-center">
+            <img alt="Illustration" class="mt-8" height="400" src="../media/Screenshot_2025-02-12_192529-removebg-preview.png" width="400"/>
+        </div>
     </div>
 </body>
 </html>
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    scroll-behavior: smooth;
+}
+
+body{
+    font-family: 'poppins';
+}
+body {
+    background-color: #eef2ff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+.bg-white {
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+input[type="text"], input[type="password"] {
+    border: 1px solid #d1d5db;
+    padding: 10px;
+    border-radius: 8px;
+    width: 100%;
+    transition: border-color 0.3s ease;
+}
+
+input[type="text"]:focus, input[type="password"]:focus {
+    outline: none;
+    border-color: #6366f1;
+    box-shadow: 0 0 5px rgba(99, 102, 241, 0.2);
+}
+
+button[type="submit"] {
+    background-color: #4f46e5;
+    color: white;
+    padding: 12px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+    background-color: #4338ca;
+}
+
+.bg-red-100 {
+    background-color: #fee2e2;
+    color: #b91c1c;
+    border-radius: 8px;
+    padding: 12px;
+    margin-bottom: 16px;
+}
+
+label {
+    font-weight: 500;
+    margin-bottom: 8px;
+    display: block;
+    color: #374151;
+}
+
+.text-2xl {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #1f2937;
+}
+
+.w-1\/2 {
+    width: 50%;
+}
+
+.max-w-4xl {
+    max-width: 900px;
+}
+
+img {
+    object-fit: contain;
+}
+
+.flex {
+    display: flex;
+}
+
+.items-center {
+    align-items: center;
+}
+
+.justify-center {
+    justify-content: center;
+}
+
+.p-8 {
+    padding: 2rem;
+}
+
+.mt-8 {
+    margin-top: 2rem;
+}
+
+.mb-4 {
+    margin-bottom: 1rem;
+}
+
+.mb-8 {
+    margin-bottom: 2rem;
+}
+
+.rounded-lg {
+    border-radius: 12px;
+}
+
+.rounded-r-lg {
+    border-top-right-radius: 12px;
+    border-bottom-right-radius: 12px;
+}
+
+.border-gray-300 {
+    border-color: #d1d5db;
+}
+
+.text-gray-700 {
+    color: #374151;
+}
+
+.text-red-700 {
+    color: #b91c1c;
+}
+
+.bg-blue-700 {
+    background-color: #1d4ed8;
+}
+
+.bg-blue-100 {
+    background-color: #dbeafe;
+}
+
+</style>

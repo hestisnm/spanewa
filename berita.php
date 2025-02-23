@@ -1,14 +1,32 @@
 <link href="berita.css" rel="stylesheet">
 
 <div class="banner">
-  <div class="hero">
-    <img style="height:300px; width:100%; object-fit: cover;" src="./media/Wireframe - 6 (2).png">
-  </div>
-  <div class="judul">
-    <h2><b>BERITA</b></h2>
-    <div class="garis"></div>
-  </div>
+<?php
+    include './admin/koneksi.php';
+    
+    // Fetch news from database
+    $sql = "SELECT * FROM banner ORDER BY date DESC";
+    $result = $conn->query($sql);
+    
+    if ($result->num_rows > 0) {
+        while($row = $result->fetch_assoc()) {
+    ?>
+
+<div class="hero">
+<img style="height:300px; width:100%; object-fit: cover; filter: brightness(70%); " src="admin/banner/upload/<?php echo $row['image']; ?>">
+    <div class="judul">
+            <h2><B>BERITA</B></h2> 
+            <div class="garis"></div>
+    </div>
 </div>
+</div>
+<?php
+        }
+    } else {
+        echo "<p>Belum ada fotoyang ditambahkan.</p>";
+    }
+    $conn->close();
+    ?>
 
 <div class="banyak">
     <?php
@@ -22,7 +40,7 @@
         while($row = $result->fetch_assoc()) {
     ?>
         <div class="foto2">
-            <img src="./admin/media/<?php echo $row['image']; ?>">
+            <img src="./admin/berita/upload/<?php echo $row['image']; ?>">
             <div class="text2">
                 <p>
                     <b><?php echo nl2br($row['title']); ?></b><br>

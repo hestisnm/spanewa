@@ -56,53 +56,42 @@
                     </div>
                 </div>
             </div>
+           
+            
 
             <div class="leadership-section">
                 <h4>Estafet Kepemimpinan</h4>
+                <?php
+    include './admin/koneksi.php';
+    
+    // Fetch news from database
+    $sql = "SELECT * FROM kepsek ORDER BY date DESC";
+    $result = $conn->query($sql);
+    
+    if ($result->num_rows > 0) {
+        while($row = $result->fetch_assoc()) {
+    ?>
+
                 <div class="leadership-timeline">
                     <div class="timeline-item">
-                        <span class="year">1983-1990</span>
-                        <span class="leader">Bp. PONIMIN, BA.</span>
+                        <span class="year"><?php echo $row['tanggal']; ?></span>
+                        <span class="leader"><?php echo $row['nama']; ?></span>
                     </div>
-                    <div class="timeline-item">
-                        <span class="year">1990-1994</span>
-                        <span class="leader">Ibu IN SUPAMI</span>
-                    </div>
-                    <div class="timeline-item">
-                        <span class="year">1994-1998</span>
-                        <span class="leader">Bp. HARJOSO, BA.</span>
-                    </div>
-                    <div class="timeline-item">
-                        <span class="year">1998-2000</span>
-                        <span class="leader">Bp. Drs. PURNOMO</span>
-                    </div>
-                    <div class="timeline-item">
-                        <span class="year">2000-2003</span>
-                        <span class="leader">Bp. Drs. SUNARMAN ROKHIYANTO</span>
-                    </div>
-                    <div class="timeline-item">
-                        <span class="year">2003-2006</span>
-                        <span class="leader">Bp. TRISNOHADI, M.Pd.</span>
-                    </div>
-                    <div class="timeline-item">
-                        <span class="year">2006-2011</span>
-                        <span class="leader">Bp. PARKIYO, S.Pd., M.Pd.</span>
-                    </div>
-                    <div class="timeline-item">
-                        <span class="year">2011-2017</span>
-                        <span class="leader">Bp. Drs. SUSILO WARDOYO, M.Si.</span>
-                    </div>
-                    <div class="timeline-item">
-                        <span class="year">2017-2023</span>
-                        <span class="leader">Bp. Drs. Budi Utomo</span>
-                    </div>
-                    <div class="timeline-item current">
-                        <span class="year">2023-sekarang</span>
-                        <span class="leader">Bp. Drs. Budi Prasetyo</span>
-                    </div>
+                   
+               
+                
+                    <?php
+        }
+        
+    } else {
+        echo "<p>Belum ada Daftar Guru</p>";
+    }
+    $conn->close();
+    ?>
+      
+      </div>
                 </div>
-            </div>
-        </div>
-    </div>
-
+            
+                </div>         
+                </div>
 

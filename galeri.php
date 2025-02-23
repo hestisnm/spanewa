@@ -1,15 +1,34 @@
-
-
 <div class="banner">
+<?php
+    include './admin/koneksi.php';
+    
+    // Fetch news from database
+    $sql = "SELECT * FROM banner ORDER BY date DESC";
+    $result = $conn->query($sql);
+    
+    if ($result->num_rows > 0) {
+        while($row = $result->fetch_assoc()) {
+    ?>
+
 <div class="hero">
-<img style="height:300px; width:100%; object-fit:cover" src="./media/Wireframe - 6 (2).png"></div>
-            <div class="judul">
+<img style="height:300px; width:100%; object-fit: cover; filter: brightness(70%); " src="admin/banner/upload/<?php echo $row['image']; ?>">
+    <div class="judul">
             <h2><B>GALERI</B></h2> 
             <div class="garis"></div>
-            </div>
-            </div>
+    </div>
+</div>
+</div>
+<?php
+        }
+    } else {
+        echo "<p>Belum ada fotoyang ditambahkan.</p>";
+    }
+    $conn->close();
+    ?>
 
-            <div class="judul2">
+
+
+            <div class="tiga">
             <?php
     include './admin/koneksi.php';
     
@@ -21,29 +40,24 @@
         while($row = $result->fetch_assoc()) {
     ?>
 
-    <h3><?php echo nl2br($row['title']); ?></h3>
-</div>
-
-<div class="tiga">
-    <div class="persegi">
-        <div class="wanpik">
-            <img src="./admin/media/<?php echo $row['image']; ?>">
-            <div class="text-overlay-container">
-                <div class="text-overlay">
-                <?php echo nl2br($row['title']); ?>
-            </div>
-            </div>
-        </div>
+<div class="persegi">
+    <div class="wanpik">
+    <img class="pik" src="./admin/galeri/upload/<?php echo $row['image']; ?>">
+    <div class="text-overlay-container">
+    <div class="text-overlay">
+    <p><?php echo nl2br($row['title']); ?></p>
+    <p><?php echo date('d F Y', strtotime($row['date'])); ?></p>
+                </div>
     </div>
-    <?php
+    </div>
+</div>
+<?php
         }
     } else {
         echo "<p>Belum ada fotoyang ditambahkan.</p>";
     }
     $conn->close();
     ?>
-
-       </div>
 
        <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
@@ -175,7 +189,7 @@ body{
     transition: opacity 1s ease, transform 1s ease;
 }
 
-.text-overlay {
+.text-overlay p {
     font-size: 0.8em;
     font-weight: 400;
     color: white;

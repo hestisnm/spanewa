@@ -1,13 +1,32 @@
-<link href="agenda.css" rel="stylesheet">
-
 <div class="banner">
+<?php
+    include './admin/koneksi.php';
+    
+    // Fetch news from database
+    $sql = "SELECT * FROM banner ORDER BY date DESC";
+    $result = $conn->query($sql);
+    
+    if ($result->num_rows > 0) {
+        while($row = $result->fetch_assoc()) {
+    ?>
+
 <div class="hero">
-<img style="height:300px; width:100%; object-fit: cover;" src="./media/Wireframe - 6 (2).png"></div>
-            <div class="judul">
+<img style="height:300px; width:100%; object-fit: cover; filter: brightness(70%); " src="admin/banner/upload/<?php echo $row['image']; ?>">
+    <div class="judul">
             <h2><B>AGENDA</B></h2> 
             <div class="garis"></div>
-            </div>
-            </div>
+    </div>
+</div>
+</div>
+
+<?php
+        }
+    } else {
+        echo "<p>Belum ada fotoyang ditambahkan.</p>";
+    }
+    $conn->close();
+    ?>
+
 
             <div class="judul2">
             <h3>"Langkah demi langkah menuju pengalaman belajar yang seru"</h3>
@@ -24,12 +43,12 @@
                         while($row = $result->fetch_assoc()){
                   ?>
                   
-               
                   <div class="konten">
-                        <img src="./admin/media/<?php echo $row['image']; ?>"
-                        <h2><?php echo nl2br($row['title']); ?></h2>
+                        <img src="./admin/agenda/upload/<?php echo $row['image']; ?>">
+                        <h2><?php echo nl2br($row['title']);?></h2>
                         </div>
-                        </div>
+                       
+                       
            <?php
                         }
                 }else{
@@ -37,7 +56,8 @@
                 }
                 $conn->close();
                 ?>
-
+</div>
+</div>
 
 <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
@@ -119,51 +139,57 @@ body{
 }
 
 
-.history-content {
-    gap: 20px;
-    margin: 60px;
-    display: grid; /* Ubah menjadi grid container */
-    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); /* Atur jumlah kolom dinamis */
-    background: white;
-    padding: 2rem;
-    border-radius: 10px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.39);
-    width: 80%;
-    align-items: center;
-    justify-content: center;
-}
-
 .judul2{
     text-align: center;
     justify-content: center;
     margin-top: 50px;
 }
 
-.history-content h2{
-    font-size: 1.3rem;
-    text-align: center ;
+.history-content {
+    display: flex; /* Menggunakan flexbox untuk sejajar horizontal */
+    gap: 20px; /* Memberikan jarak antar konten */
+    margin: 60px;
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.39);
+    width: 100%; /* Pastikan tinggi elemen induk */
+    justify-content: center; /* Pusatkan semua elemen secara horizontal */
+    align-items: center; /* Pusatkan elemen secara vertikal */
+    flex-wrap: wrap; /* Jika ruang tidak cukup, elemen akan meliputi baris baru */
 }
 
 .konten {
-    align-items: center;
-    justify-content: center;
-    margin:5vh;
-    width: 15rem;
-    height: 14rem;
+    width: 20rem; /* Setiap konten memiliki lebar tetap */
+    height: 15rem; /* Setiap konten memiliki tinggi tetap */
     background-color: white;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.39);
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Pusatkan isi konten secara vertikal */
+    justify-content: space-between;
+    padding: 10px;
 }
 
-.konten img{
+.konten img {
     object-fit: cover;
-    width: 240px;
-    height: 150px;
+    width: 100%;
+    height: 70%; /* Gambar menempati 70% dari tinggi konten */
+    border-radius: 8px; /* Sudut gambar lebih halus */
 }
 
-.konten p{
+.konten h2 {
+    font-size: 1rem;
     text-align: center;
-    margin: 1rem;
+    margin-top: 10px;
+    color: #333;
 }
+
+.konten p {
+    text-align: center;
+    font-size: 0.9rem;
+}
+
 
 </style>           
 

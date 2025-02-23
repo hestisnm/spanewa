@@ -1,9 +1,10 @@
 <?php
-$servername = "localhost";
-$username = "root"; // Ganti dengan username MySQL kamu
-$password = ""; // Ganti dengan password MySQL kamu, jika ada
-$dbname = "spanewahesti"; // Nama database yang digunakan
-
-$conn = new mysqli($servername, $username, $password, $dbname);
-
+$host = "localhost";
+$user = "root";
+$password = "";
+$dbname = "spanewa_hesti";
+$conn = new mysqli($host, $user, $password, $dbname);
+if ($conn->connect_error) {
+die("Koneksi gagal: " . $conn->connect_error);
+}
 ?>
